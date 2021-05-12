@@ -10,19 +10,18 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.time.LocalDate;
 
 @Data
-@Document(value = "players")
-public class Player {
+@Document(value = "coaches")
+public class Coach {
 
     @Id
     private String _id;
     private String fullname;
-    private int height;
-    private int weight;
     private String position;
-    private Season[] seasons;
-    private LocalDate birthdate;
-    private boolean inClub;
     private String bio;
-    private String[] achievements;
+    private LocalDate birthdate;
+
+    @Field(name = "team-status")
+    private int status;
+    private String[] periods;
     private Binary image;
 }

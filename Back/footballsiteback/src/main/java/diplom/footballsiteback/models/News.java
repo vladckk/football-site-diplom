@@ -16,7 +16,8 @@ public class News {
     private String mainTitle;
     private String title;
     private String text;
-    private Binary image;
+    private Binary[] image;
     private LocalDateTime date;
+    private String videolink;
 
 }
