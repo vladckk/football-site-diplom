@@ -1,0 +1,82 @@
+.header1 {
+  width: 100%;
+  background: #00a750;
+  height: 50px;
+  z-index: 1;
+  position: relative;
+}
+
+.name {
+  padding: 12px;
+  margin-left: 150px;
+  font-size: 16px;
+  color: white;
+  font-family: sans-serif;
+  display: inline-block;
+}
+.search-box {
+  float: right;
+  margin: 10px;
+}
+.search {
+  padding: 4px;
+  border: none;
+  color: #00a750;
+  font-size: 13px;
+  width: 180px;
+}
+.search:focus {
+  outline: none;
+  border: 1px solid white;
+  box-shadow: 0 0 5px white;
+}
+
+.search-box button {
+  border: none;
+  margin-left: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  cursor: pointer;
+  color: #00a750;
+  background: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  padding-bottom: 50px;
+}
+
+.navbar {
+  height: 65px;
+}
+
+.navbar-brand img {
+  width: 110px;
+  z-index: 2;
+  position: relative;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu{ display: none;}
+  .navbar .nav-item:hover .dropdown-menu{ display: block; }
+  .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+
+footer{
+  height: 50px;
+  width: 100%;
+  background: #252932;
+  position: absolute;
+  bottom: 0;
+  color: #6e6e6e;
+}

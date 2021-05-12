@@ -1,0 +1,154 @@
+.player-image {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  border: 3px solid #fafafa;
+}
+
+.player-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.player-position {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.player-info-value {
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+
+.right-border-style {
+  position: relative;
+}
+
+.right-border-style::after {
+  content: "";
+  background: lightgray;
+  position: absolute;
+  top: 12px;
+  right: 0;
+  height: 60%;
+  transform: skew(-15deg);
+  width: 1px;
+}
+
+.player-info-stats {
+  font-weight: 700;
+  font-size: 3.125rem;
+  line-height: 1;
+  padding: 0;
+  margin-bottom: -2px;
+}
+
+.player-page-image {
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  padding: 0;
+}
+
+.sticker {
+  background-color: #00a750;
+  color: white;
+  transform: skew(-20deg);
+  padding: 5px 15px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  right: -10px;
+}
+
+.sticker span {
+  display: inline-block;
+  transform: skew(20deg);
+}
+
+.player-bio-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  position: relative;
+  color: black;
+}
+
+.player-bio-subtitle {
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: black;
+}
+
+.sticker-title {
+  background-color: #00a750;
+  color: white;
+  transform: skew(-20deg);
+  padding: 2px 18px;
+  font-weight: 900;
+  font-style: italic;
+  font-size: 2.375rem;
+  font-family: serif;
+  width: fit-content;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.sticker-title span {
+  display: inline-block;
+  transform: skew(20deg);
+}
+
+.player-page-tabs a{
+  display: inline-block;
+  margin-left: 24px;
+  height: 70px;
+  line-height: 66px;
+  padding: 0;
+  border-bottom: 2px solid transparent;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+}
+
+.player-page-tabs a.selected {
+  font-weight: 700;
+  border-bottom-color: #00a750;
+}
+
+.navSeasons button {
+  background-color: white;
+  color: black;
+  display: inline-block;
+  transform: skew(-20deg);
+  padding: 4px 16px;
+  width: fit-content;
+  border-radius: 0;
+  margin-left: 10px;
+}
+
+.navSeasons span {
+  transform: skew(20deg);
+  display: inline-block;
+}
+
+.navSeasons .active{
+  background-color: #00a750;
+  color: white; 
+  font-weight: 700;
+}
+
+.navSeasons .active:hover {
+  color: white;
+}
+
+.navSeasons button:hover {
+  color: #00a750;
+}
+
+.player-table td {
+  padding: 15px 10px;
+}

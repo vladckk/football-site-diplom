@@ -1,0 +1,68 @@
+.coach-link {
+  color: black;
+  padding-bottom: 0px;
+}
+
+.coach-link:hover {
+  color: #00a750;
+}
+
+.coach-link.active {
+  color: #00a750;
+  text-decoration: underline;
+}
+
+.coach-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color:black
+}
+
+.parent-coach-image {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.coach-image {
+  border-radius: 50%;
+  border: 0px solid black;
+  margin-top: 150px;
+  position: absolute;
+  display: table-cell;
+  width: 150px;
+  height: 150px;
+}
+
+.coach-image:hover {
+  border-color: #00a750;
+  border-width: 4px;
+  transition: border-width 0.1s, border-color 0s ease;
+}
+
+.coach-name {
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.sticker {
+  background-color: #00a750;
+  color: white;
+  transform: skew(-20deg);
+  margin-left: 5px;
+  padding: 2px 8px 4px;
+  font-size: small;
+  width: fit-content;
+}
+
+.sticker span {
+  display: inline-block;
+  transform: skew(20deg);
+}
+
+.coach-info-li::before {
+  content: "";
+  color: #00a750;
+}

@@ -1,0 +1,91 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<div class="container-fluid" style="background-color: #252932;">
+  <div class="container">
+    <div class="row">
+      <div class="col-3 my-5">
+        <div class="player-page-image">
+          <img class="player-image" src="data:image/jpeg;base64,{{player.image.data}}">
+          <div class="sticker"><span>#{{player.currentSeason.number}}</span></div>
+        </div>
+      </div>
+      <div class="col-8 my-5" style="color: #fafafa;margin-left: 40px;">
+        <h2 class="player-title">{{player.fullname}}</h2>
+        <p class="player-position">{{player.position}}</p>
+        <hr>
+        <div class="row">
+          <div class="col-6">Дата рождения: <span class="player-info-value">{{player.birthdateString}}</span></div>
+          <div class="col-3">Вес: <span class="player-info-value">{{player.weight}} кг</span></div>
+          <div class="col-3">Рост: <span class="player-info-value">{{player.height}} см</span></div>
+        </div>
+        <hr>
+        <div class="row w-100">
+          <div class="col right-border-style">
+            <h5 class="text-center player-info-stats">{{player.currentSeason.games}}</h5>
+            <p class="text-center">игр в сезоне</p>
+          </div>
+          <div class="col right-border-style">
+            <h5 class="text-center player-info-stats">{{player.currentSeason.goals}}</h5>
+            <p class="text-center">забил голов</p>
+          </div>
+          <div class="col">
+            <h5 class="text-center player-info-stats">{{player.currentSeason.assists}}</h5>
+            <p class="text-center">голевых передач</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-3">
+  <h1 class="player-bio-title py-2">Основной состав</h1>
+  <hr>
+  <h2 class="player-bio-subtitle py-2">
+    <div class="sticker-title"><span>i</span></div>Биография
+  </h2>
+  <p [innerHTML]="player.bio"></p>
+  <div *ngIf="player.achievements != null && player.achievements.length > 0">
+    <h5 style="color: black;">Достижения: </h5>
+    <ul>
+      <li *ngFor="let ach of player.achievements">{{ach}}</li>
+    </ul>
+  </div>
+  <div class="player-page-tabs">
+    <hr style="padding-bottom: 0;margin-bottom: 0;">
+    <a href="#player" class="selected">Статистика в ФК «Гомель»</a>
+    <hr style="margin-top: -1px;">
+  </div>
+  <div class="player-stat">
+    <ul class="nav nav-pills navSeasons" id="pills-tab" role="tablist">
+      <li class="nav-item" role="presentation" *ngFor="let s of player.seasons; let i = index;let first = first">
+        <button class="nav-link" id="pillstab{{i}}" data-bs-toggle="pill" data-bs-target="#pills{{i}}"
+            type="button" role="tab" [ngClass]="{'active': first}" (click)="selectPill(i)">
+            <span>Сезон {{s.year}}</span></button>
+      </li>
+    </ul>
+    <table class="table text-center my-4">
+      <thead>
+        <tr>
+          <th scope="col" class="text-start">Турнир</th>
+          <th scope="col">Игры</th>
+          <th scope="col">Голы</th>
+          <th scope="col">ГП</th>
+          <th scope="col">ЖК</th>
+          <th scope="col">КК</th>
+          <th scope="col">Мин</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="player-table">
+          <td class="text-start">Высшая лига</td>
+          <td>{{chosenSeason.games}}</td>
+          <td>{{chosenSeason.goals}}</td>
+          <td>{{chosenSeason.assists}}</td>
+          <td>{{chosenSeason.yc}}</td>
+          <td>{{chosenSeason.rc}}</td>
+          <td>{{chosenSeason.minutes}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

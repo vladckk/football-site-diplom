@@ -1,0 +1,35 @@
+.register-block {
+  background-color: #eee;
+  width: 25%;
+  padding: 20px 30px;
+}
+
+.register-title {
+  color: black;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 700;
+}
+
+.register-subtitle {
+  line-height: 16px;
+  color: black;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.submit-button {
+  border: 0;
+  background-color: #00a750;
+  color: white;
+  width: 100%;
+  padding: 7px 0;
+}
+
+.submit-button:hover {
+  background-color: green;
+}
+
+.error-message {
+  color: red;
+}

@@ -1,0 +1,39 @@
+.navTours button.active {
+    background-color: #00a750;
+    font-weight: bold;
+}
+
+.navTours button.active:hover {
+    color: white;
+}
+
+.navTours button:hover {
+    color: #00a750;
+}
+
+.firstRow {
+  border-top: 3px solid #00a750;
+}
+
+.oddRow {
+  background: #eee;
+}
+
+.nextMatch {
+  background: #00a750;
+  color: white
+}
+
+.right-border-style {
+  position: relative;
+}
+
+.right-border-style::after {
+  content: "";
+  background: #ddd;
+  position: absolute;
+  top: 15%;
+  right: 0;
+  height: 70%;
+  width: 1px;
+}

@@ -1,0 +1,88 @@
+.main-title-style {
+  text-decoration: none;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.main-title-style:hover {
+  color: lightgray;
+  transition: 200ms;
+}
+
+.title-style {
+  text-decoration: none;
+  color: black;
+}
+
+.title-style:hover {
+  color: #00a750;
+  transition: 200ms;
+}
+
+
+.main-carousel-image {
+  object-fit: cover;
+  width: 100%;
+  height: 500px;
+  filter: brightness(90%);
+}
+
+.news-card-block {
+  object-fit: cover;
+  width: 100%;
+  height: 200px;
+  background-color: lightgray;
+}
+
+.nav-link {
+  font-size: large;
+}
+
+.signature {
+  font-size: smaller;
+}
+
+.right-border-style {
+  position: relative;
+}
+
+.right-border-style::after {
+  content: "";
+  background: lightgray;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 80%;
+  width: 1px;
+}
+
+.player-card-img {
+  object-fit: cover;
+  object-position: 50% 20%;
+  width: 200px;
+  height: 200px;
+}
+
+.carousel-card {
+  background-color: lightgray;
+}
+
+.player-card-control-prev {
+  margin-left: -100px;
+}
+
+.player-card-control-next {
+  margin-right: -100px;
+}
+
+#playersCarousel1 {
+  width: 95%;
+}
+
+#playersCarousel2 {
+  width: 95%;
+}
+
+#teamTable td, th {
+  padding: 6px 6px 6px 8px;
+}

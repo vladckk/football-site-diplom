@@ -1,0 +1,209 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" crossorigin="anonymous">
+
+<div class="container mt-3" style="">
+  <div class="row">
+    <div class="col-7">
+      <h3>Полевые игроки</h3>
+      <table class="table table-striped text-center">
+        <thead>
+          <tr>
+            <th scope="col">№</th>
+            <th scope="col">Игрок</th>
+            <th scope="col">И</th>
+            <th scope="col">Мин</th>
+            <th scope="col">Г</th>
+            <th scope="col">П</th>
+            <th scope="col">Г+П</th>
+            <th scope="col">Г+П/90</th>
+            <th scope="col">ЖК</th>
+            <th scope="col">КК</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let players of fieldPlayers">
+            <th scope="row">{{players.season.number}}</th>
+            <td class="text-start"><!--<span class="flag-icon flag-icon-by"></span>-->{{players.fullname}}</td>
+            <td>{{players.season.games}}</td>
+            <td>{{players.season.minutes}}</td>
+            <td>{{players.season.goals}}</td>
+            <td>{{players.season.assists}}</td>
+            <td>{{players.ga}}</td>
+            <td *ngIf="players.gapergame == 0 else else1">-</td>
+            <ng-template #else1>
+              <td>{{players.gapergame}} мин</td>
+            </ng-template>
+            <td>{{players.season.yc}}</td>
+            <td>{{players.season.rc}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Вратари</h3>
+      <table class="table table-striped text-center">
+        <thead>
+        <tr>
+          <th scope="col">№</th>
+          <th scope="col">Игрок</th>
+          <th scope="col">И</th>
+          <th scope="col">Мин</th>
+          <th scope="col">Г</th>
+          <th scope="col">П</th>
+          <th scope="col">ГП</th>
+          <th scope="col">ГП/90</th>
+          <th scope="col">ЖК</th>
+          <th scope="col">КК</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let gk of goalkeepers">
+          <th scope="row">{{gk.season.number}}</th>
+          <td class="text-start"><!--<span class="flag-icon flag-icon-by"></span>-->{{gk.fullname}}</td>
+          <td>{{gk.season.games}}</td>
+          <td>{{gk.season.minutes}}</td>
+          <td>{{gk.season.goals}}</td>
+          <td>{{gk.season.assists}}</td>
+          <td>{{gk.season.goalsconceded}}</td>
+          <td *ngIf="gk.gapergame == 0 else else1">-</td>
+          <ng-template #else1>
+            <td>{{gk.gapergame}} мин</td>
+          </ng-template>
+          <td>{{gk.season.yc}}</td>
+          <td>{{gk.season.rc}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5">
+      <h3>Предыдущие 5 игр:</h3>
+      <table class="table text-center table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Дата</th>
+            <th scope="col">Соперник</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Счёт</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let match of matches.slice(0, 5)">
+            <td>{{match.dateString}}</td>
+            <ng-template [ngIf]="match.homeGame" [ngIfElse]="away">
+              <td>{{match.awayTeam}}</td>
+              <td>Дома</td>
+            </ng-template>
+            <ng-template #away>
+              <td>{{match.homeTeam}}</td>
+              <td>В гостях</td>
+            </ng-template>
+            <ng-template [ngIf]="match.result == 'win'">
+              <td style="font-weight: bold">{{match.score}} <i class="fa fa-circle" style="color: green;"></i></td>
+            </ng-template>
+            <ng-template [ngIf]="match.result == 'draw'">
+              <td style="font-weight: bold">{{match.score}} <i class="fa fa-circle" style="color: orange"></i></td>
+            </ng-template>
+            <ng-template [ngIf]="match.result == 'lose'">
+              <td style="font-weight: bold">{{match.score}} <i class="fa fa-circle" style="color: red;"></i></td>
+            </ng-template>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Следующие 2 игры:</h3>
+      <table class="table table-sm text-center">
+        <tbody>
+          <tr *ngFor="let match of matches.slice(5)">
+            <td>{{match.dateString}}</td>
+            <ng-template [ngIf]="match.homeGame" [ngIfElse]="away">
+              <td>{{match.awayTeam}}</td>
+              <td>Дома</td>
+            </ng-template>
+            <ng-template #away>
+              <td>{{match.homeTeam}}</td>
+              <td>В гостях</td>
+            </ng-template>
+            <td style="font-weight: bold">-:- <i class="fa fa-circle" style="color: lightgray;"></i></td>
+          </tr>
+        </tbody>
+      </table>
+      <h3>Командная статистика</h3>
+      <div class="row">
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.win}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Победы</p>
+          </div>
+        </div>
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.draw}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Ничьи</p>
+          </div>
+        </div>
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.lose}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Поражения</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.goalsFor}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Забитые мячи</p>
+          </div>
+        </div>
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.goalsAgainst}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Пропущенные мячи</p>
+          </div>
+        </div>
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.goalsDiff}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Разница мячей</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.scorePercent}}%</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Процент набранных очков</p>
+          </div>
+        </div>
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.averageScoredGoalsPerGame}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Среднее количество забитых голов</p>
+          </div>
+        </div>
+        <div class=" col card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.averageGoalsPerGame}}</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Среднее количество голов за матч</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class=" col-4 card text-center p-0 border-0">
+          <div class="card-body">
+            <h4 class="card-title" style="margin-bottom: -5px;">{{gomel.winPercent}}%</h4>
+            <hr>
+            <p class="card-text" style="margin-top: -5px;">Процент побед</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

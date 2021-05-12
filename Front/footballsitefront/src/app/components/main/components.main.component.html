@@ -1,0 +1,277 @@
+<div class="container">
+  <div class="row w-100 mt-3 mx-3">
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="7000">
+      <ol class="carousel-indicators">
+        <li data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active"></li>
+        <li data-bs-target="#mainCarousel" data-bs-slide-to="1"></li>
+        <li data-bs-target="#mainCarousel" data-bs-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner rounded" >
+        <div class="carousel-item active">
+          <img class="d-block w-100 main-carousel-image" src="data:image/jpeg;base64,{{news[0].image[0].data}}" alt="First slide">
+          <div class="carousel-caption">
+            <h3><a routerLink="/news/{{news[0]._id}}" class="main-title-style">{{news[0].mainTitle}}</a></h3>
+            <p>{{news[0].title}}</p>
+          </div>
+        </div>
+        <div class="carousel-item" *ngFor="let n of news.slice(1, 3)">
+          <img class="d-block w-100 main-carousel-image" src="data:image/jpeg;base64,{{n.image[0].data}}" alt="First slide">
+          <div class="carousel-caption">
+            <h3><a routerLink="/news/{{n._id}}" class="main-title-style">{{n.mainTitle}}</a></h3>
+            <p>{{n.title}}</p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#mainCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#mainCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <!-- <div class="row w-100 mt-4 mx-3">
+      <div class="col"    >
+          <div class="card p-0">
+              <img class="card-img" src="n1.jpg" alt="card image cap">
+              <div class="card-img-overlay d-flex flex-column justify-content-end mx-2">
+                  <h3 class="card-title"><a href="#" class="main-title-style">Заголовок 1</a></h5>
+                  <p class="card-text" style="color: white; font-size: medium;">Просто какое-то оглавление новости и какая-то информация</p>
+              </div>
+          </div>
+      </div>
+  </div> -->
+  <div class="row w-100 mx-3 mt-4">
+    <hr class="col" style="height: 3px; background-color: #00a750; opacity: 1;">
+    <h3 class="mb-3">Остальные новости</h3>
+    <div class="col-4" *ngFor="let n of news.slice(3)">
+      <div class="card">
+        <img class="card-img-top news-card-block" src="data:image/jpeg;base64,{{n.image[0].data}}" alt="Photo card">
+        <div class="card-body">
+          <h5 class="card-title"><a routerLink="/news/{{n._id}}" class="title-style">{{n.mainTitle}}</a></h5>
+          <p class="card-text">{{n.title}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 mt-2">
+      <a href="/news" class="justify-content-end float-end" style="color: black;">Все новости</a>
+    </div>
+    <hr class="col mt-3" style="height: 3px; background-color: #00a750; opacity: 1;">
+  </div>
+</div>
+
+<div class="container pb-4">
+  <div class="row w-100 mx-3">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <button class="nav-link active" id="nav-strikers-tab" data-bs-toggle="tab" data-bs-target="#nav-strikers" type="button" role="tab" aria-controls="nav-strikers" aria-selected="true">Бомбардиры</button>
+        <button class="nav-link" id="nav-assistants-tab" data-bs-toggle="tab" data-bs-target="#nav-assistants" type="button" role="tab" aria-controls="nav-assistants" aria-selected="false">Ассистенты</button>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-strikers" role="tabpanel" aria-labelledby="nav-strikers-tab">
+        <div class="d-flex justify-content-center">
+          <!--Carousel with best goalscorers-->
+          <div id="playersCarousel1" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel" data-bs-interval="false">
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="card col-4 border-0" *ngFor="let striker of goalscorers.slice(0, 3); let i = index;">
+                    <div class="text-center carousel-card rounded"><img class="card-img-top player-card-img" src="data:image/jpeg;base64,{{striker.image.data}}"></div>
+                    <div class="rounded" style="background-color: white; border: 1px solid black;">
+                      <h5 class="card-title text-center pt-3"><a routerLink="/player/{{striker._id}}" class="title-style">{{striker.fullname}}</a></h5>
+                      <p class="text-muted text-center signature">{{striker.position}}</p>
+                      <div class="container-fluid d-flex justify-content-center">
+                        <div class="row w-100 rounded">
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{goalscorersStats[i].games}}</h5>
+                            <p class="text-center">МАТЧИ</p>
+                          </div>
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{goalscorersStats[i].goals}}</h5>
+                            <p class="text-center">ГОЛЫ</p>
+                          </div>
+                          <div class="col">
+                            <h5 class="text-center">{{goalscorersStats[i].assists}}</h5>
+                            <p class="text-center">ПАСЫ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="card col-4 border-0" *ngFor="let striker of goalscorers.slice(3, 6); let i = index">
+                    <div class="text-center carousel-card rounded"><img class="card-img-top player-card-img" src="data:image/jpeg;base64,{{striker.image.data}}"></div>
+                    <div class="rounded" style="background-color: white; border: 1px solid black;">
+                      <h5 class="card-title text-center pt-3"><a routerLink="/player/{{striker._id}}" class="title-style">{{striker.fullname}}</a></h5>
+                      <p class="text-muted text-center signature">{{striker.position}}</p>
+                      <div class="container-fluid d-flex justify-content-center">
+                        <div class="row w-100 rounded">
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{goalscorersStats[i + 3].games}}</h5>
+                            <p class="text-center">МАТЧИ</p>
+                          </div>
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{goalscorersStats[i + 3].goals}}</h5>
+                            <p class="text-center">ГОЛЫ</p>
+                          </div>
+                          <div class="col">
+                            <h5 class="text-center">{{goalscorersStats[i + 3].assists}}</h5>
+                            <p class="text-center">ПАСЫ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev player-card-control-prev" href="#playersCarousel1" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next player-card-control-next" href="#playersCarousel1" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!--Carousel with best assistants-->
+      <div class="tab-pane fade" id="nav-assistants" role="tabpanel" aria-labelledby="nav-assistants-tab">
+        <div class="d-flex justify-content-center">
+          <div id="playersCarousel2" class="carousel carousel-dark slide mt-2" data-bs-ride="carousel"  data-bs-interval="false">
+            <div class="carousel-inner" role="listbox">
+              <div class="carousel-item active">
+                <div class="row">
+                  <div class="card col-4 border-0" *ngFor="let assist of assistants.slice(0, 3); let i = index">
+                    <div class="text-center carousel-card rounded"><img class="card-img-top player-card-img" src="data:image/jpeg;base64,{{assist.image.data}}"></div>
+                    <div class="rounded" style="background-color: white; border: 1px solid black;">
+                      <h5 class="card-title text-center pt-3"><a routerLink="/player/{{assist._id}}" class="title-style">{{assist.fullname}}</a></h5>
+                      <p class="text-muted text-center signature">{{assist.position}}</p>
+                      <div class="container-fluid d-flex justify-content-center">
+                        <div class="row w-100 rounded">
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{assistantsStats[i].games}}</h5>
+                            <p class="text-center">МАТЧИ</p>
+                          </div>
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{assistantsStats[i].goals}}</h5>
+                            <p class="text-center">ГОЛЫ</p>
+                          </div>
+                          <div class="col">
+                            <h5 class="text-center">{{assistantsStats[i].assists}}</h5>
+                            <p class="text-center">ПАСЫ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+                  <div class="card col-4 border-0" *ngFor="let assist of assistants.slice(3, 6); let i = index">
+                    <div class="text-center carousel-card rounded"><img class="card-img-top player-card-img" src="data:image/jpeg;base64,{{assist.image.data}}"></div>
+                    <div class="rounded" style="background-color: white; border: 1px solid black;">
+                      <h5 class="card-title text-center pt-3"><a routerLink="/player/{{assist._id}}" class="title-style">{{assist.fullname}}</a></h5>
+                      <p class="text-muted text-center signature">{{assist.position}}</p>
+                      <div class="container-fluid d-flex justify-content-center">
+                        <div class="row w-100 rounded">
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{assistantsStats[i+3].games}}</h5>
+                            <p class="text-center">МАТЧИ</p>
+                          </div>
+                          <div class="col right-border-style">
+                            <h5 class="text-center">{{assistantsStats[i+3].goals}}</h5>
+                            <p class="text-center">ГОЛЫ</p>
+                          </div>
+                          <div class="col">
+                            <h5 class="text-center">{{assistantsStats[i+3].assists}}</h5>
+                            <p class="text-center">ПАСЫ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a class="carousel-control-prev player-card-control-prev" href="#playersCarousel2" role="button" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next player-card-control-next" href="#playersCarousel2" role="button" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container pb-4">
+  <div class="row mx-3 w-100"><hr style="height: 3px; background-color: #00a750; opacity: 1;"></div>
+  <div class="row mx-3 w-100">
+    <h3>Турнирная таблица</h3>
+    <div class="col-8">
+      <table class="table table-striped table-bordered text-center" id="teamTable">
+        <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Команда</th>
+          <th scope="col">И</th>
+          <th scope="col">В</th>
+          <th scope="col">Н</th>
+          <th scope="col">П</th>
+          <th scope="col">ЗМ</th>
+          <th scope="col">ПМ</th>
+          <th scope="col">РМ</th>
+          <th scope="col">О</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let team of table.teams; let i = index">
+          <th scope="row">{{i + 1}}</th>
+          <td class="text-start"><div *ngIf="team.name !== 'ФК Гомель'; else elseTeam">{{team.name}}</div>
+            <ng-template #elseTeam><b>{{team.name}}</b></ng-template>
+          </td>
+          <td>{{team.games}}</td>
+          <td>{{team.win}}</td>
+          <td>{{team.draw}}</td>
+          <td>{{team.lose}}</td>
+          <td>{{team.goalsFor}}</td>
+          <td>{{team.goalsAgainst}}</td>
+          <td><div *ngIf="team.goalDiff < 0; else elseDiff">{{team.goalDiff}}</div>
+            <ng-template #elseDiff>+{{team.goalDiff}}</ng-template>
+          </td>
+          <td><b>{{team.points}}</b></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-4">
+      <p>И - Игры</p>
+      <p>В - Выигрыши</p>
+      <p>Н - Ничьи</p>
+      <p>П - Поражения</p>
+      <p>ЗМ - Забитые мячи</p>
+      <p>ПМ - Пропущенные мячи</p>
+      <p>РМ - Разница мячей</p>
+      <p>О - Очки</p>
+      <p><div style="font-size: small" *ngFor="let finedTeam of finedTeams">
+      <div *ngIf="finedTeam.fine > 4; else elsePoint">{{finedTeam.name}} оштрафованы на {{finedTeam.fine}} очков {{finedTeam.reason}}</div>
+      <ng-template #elsePoint>{{finedTeam.name}} оштрафованы на {{finedTeam.fine}} очка {{finedTeam.reason}}</ng-template>
+    </div>
+    </div>
+  </div>
+</div>

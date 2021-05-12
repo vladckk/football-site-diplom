@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row w-100 mt-3 pb-3">
+    <h1>Основной состав</h1>
+    <hr class="col" style="background-color: #00a750; height: 3px; opacity: 1">
+    <h3>Вратари</h3>
+    <div class="col-sm-3 mt-3" *ngFor="let gk of goalkeepers">
+      <div class="card mx-2">
+        <div class="parent-players-card-img">
+          <img src="data:image/jpeg;base64,{{gk.image.data}}" class="card-img-top players-card-img" alt="gomza">
+        </div>
+        <hr class="col-12 pt-0 mt-0" style="background-color: #00a750; height: 3px; opacity: 1">
+        <div class="card-body pt-0 mt-0">
+          <h5 class="card-title text-center"><a routerLink="/player/{{gk._id}}" class="player-name-style">{{gk.fullname}}</a></h5>
+          <p class="card-subtitle text-center">{{gk.birthdate}}</p>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 mt-3" style="background-color: #00a750; height: 3px; opacity: 1">
+    <h3>Защитники</h3>
+    <div class="col-sm-3 mt-3" *ngFor="let df of defenders">
+      <div class="card mx-2">
+        <div class="parent-players-card-img">
+          <img src="data:image/jpeg;base64,{{df.image.data}}" class="card-img-top players-card-img" alt="gomza">
+        </div>
+        <hr class="col-12 pt-0 mt-0" style="background-color: #00a750; height: 3px; opacity: 1">
+        <div class="card-body pt-0 mt-0">
+          <h5 class="card-title text-center"><a routerLink="/player/{{df._id}}" class="player-name-style">{{df.fullname}}</a></h5>
+          <p class="card-subtitle text-center">{{df.birthdate}}</p>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 mt-3" style="background-color: #00a750; height: 3px; opacity: 1">
+    <h3>Полузащитники</h3>
+    <div class="col-sm-3 mt-3" *ngFor="let mf of midfielders">
+      <div class="card mx-2">
+        <div class="parent-players-card-img">
+          <img src="data:image/jpeg;base64,{{mf.image.data}}" class="card-img-top players-card-img" alt="gomza">
+        </div>
+        <hr class="col-12 pt-0 mt-0" style="background-color: #00a750; height: 3px; opacity: 1">
+        <div class="card-body pt-0 mt-0">
+          <h5 class="card-title text-center"><a routerLink="/player/{{mf._id}}" class="player-name-style">{{mf.fullname}}</a></h5>
+          <p class="card-subtitle text-center">{{mf.birthdate}}</p>
+        </div>
+      </div>
+    </div>
+    <hr class="col-12 mt-3" style="background-color: #00a750; height: 3px; opacity: 1">
+    <h3>Нападающие</h3>
+    <div class="col-sm-3 mt-3" *ngFor="let str of strikers">
+      <div class="card mx-2">
+        <div class="parent-players-card-img">
+          <img src="data:image/jpeg;base64,{{str.image.data}}" class="card-img-top players-card-img" alt="gomza">
+        </div>
+        <hr class="col-12 pt-0 mt-0" style="background-color: #00a750; height: 3px; opacity: 1">
+        <div class="card-body pt-0 mt-0">
+          <h5 class="card-title text-center"><a routerLink="/player/{{str._id}}" class="player-name-style">{{str.fullname}}</a></h5>
+          <p class="card-subtitle text-center">{{str.birthdate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

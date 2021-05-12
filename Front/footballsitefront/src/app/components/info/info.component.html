@@ -1,0 +1,19 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<div class="container">
+  <h1 class="info-title p-4">История клуба</h1>
+  <div *ngFor="let inf of info">
+    <hr>
+    <div class="row mt-4 mb-4">
+      <div class="col-3 text-center">
+        <img class="pt-1 info-image" src="assets/images/background.jpg">
+        <!--<div class="line"></div>-->
+      </div>
+      <div class="col-9">
+        <h2 class="info-sub-title">{{inf.year}}</h2>
+        <div [innerHTML]="inf.info"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+<div class="container">
+  <div class="row mx-3 my-3">
+    <div class="col-3">
+      <h4 style="color:black">Тренерский штаб</h4>
+      <div class="nav flex-column nav-item me-3" id="v-links-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active coach-link" id="v-link-main-tab" data-bs-toggle="pill" data-bs-target="#v-link-main"
+          type="button" role="tab">Основной состав</a>
+        <a class="nav-link coach-link" id="v-link-reserve-tab" data-bs-toggle="pill"  data-bs-target="#v-link-reserve"
+          type="button" role="tab">Дублирующий состав</a>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="tab-content" id="v-links-tabContent">
+        <div class="tab-pane fade show active" id="v-link-main" role="tabpanel" aria-labelledby="v-link-main-tab">
+          <h2 class="coach-title">Основной состав</h2>
+          <div *ngFor="let coach of maincoaches">
+            <hr style="margin: 30px auto;">
+            <div class="row">
+              <div class="col-3">
+                <div class="parent-coach-image">
+                  <img class="coach-image" src="data:image/jpeg;base64,{{coach.image.data}}">
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="coach-name mb-2">{{coach.fullname}}</div>
+                <div class="sticker mb-2"><span>{{coach.position}}</span></div>
+                <div>
+                  <p [innerHTML]="coach.bio"></p>
+                  <ul>
+                    <li class="my-1" style="color: #00a750;" *ngFor="let period of coach.periods"><span style="color: black;">{{period}}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-link-reserve" role="tabpanel" aria-labelledby="v-link-reserve-tab">
+          <h2 class="coach-title">Дублирующий состав</h2>
+          <div *ngFor="let coach of reservecoaches">
+            <hr style="margin: 30px auto;">
+            <div class="row">
+              <div class="col-3">
+                <div class="parent-coach-image">
+                  <img class="coach-image" src="data:image/jpeg;base64,{{coach.image.data}}">
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="coach-name mb-2">{{coach.fullname}}</div>
+                <div class="sticker mb-2"><span>{{coach.position}}</span></div>
+                <div>
+                  <p [innerHTML]="coach.bio"></p>
+                  <ul>
+                    <li class="my-1" style="color: #00a750;" *ngFor="let period of coach.periods"><span style="color: black;">{{period}}</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
