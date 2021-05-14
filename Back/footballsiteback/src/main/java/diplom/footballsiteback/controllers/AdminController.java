@@ -17,26 +17,26 @@ public class AdminController {
     MongoTemplate mongoTemplate;
 
     @PostMapping("/registry")
-    public boolean addUser(@RequestBody Admin admin) {
-        boolean check = false;
+    public int addUser(@RequestBody Admin admin) {
         try {
             mongoTemplate.insert(admin);
         } catch (Exception exception) {
-            check = true;
+            return -1;
         }
-        System.out.println(admin.getUsername() + " - " + admin.getPassword() + " - " + check);
-        return check;
+        System.out.println(admin.getUsername() + " - " + admin.getPassword() + " - " + admin.getRole());
+        return admin.getRole();
     }
 
-    @PostMapping("/login")
-    public int loginUser(@RequestBody Admin admin) {
+    @GetMapping("/login")
+    public Admin loginUser(Admin admin) {
+        /*
         int role = admin.getRole();
         Query query = new Query();
         query.addCriteria(Criteria.where("username").is(admin.getUsername()).and("password").is(admin.getPassword()));
         Admin adm = mongoTemplate.findOne(query, Admin.class);
         if (adm == null) {
-            role = 0;
-        }
-        return role;
+            role = -1;
+        }*/
+        return admin;
     }
 }

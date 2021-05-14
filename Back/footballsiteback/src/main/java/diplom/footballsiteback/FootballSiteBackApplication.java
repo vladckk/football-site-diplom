@@ -3,31 +3,20 @@ package diplom.footballsiteback;
 import diplom.footballsiteback.models.*;
 import diplom.footballsiteback.repos.*;
 import org.apache.commons.io.IOUtils;
-import org.apache.tomcat.jni.Local;
 import org.bson.BsonBinarySubType;
 import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Comparator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class FootballSiteBackApplication implements CommandLineRunner {
@@ -51,7 +40,6 @@ public class FootballSiteBackApplication implements CommandLineRunner {
     CoachesRepository coachesRepository;
 
     public static void main(String[] args) {
-
         SpringApplication.run(FootballSiteBackApplication.class, args);
     }
 
