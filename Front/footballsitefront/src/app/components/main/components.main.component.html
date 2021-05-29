@@ -34,18 +34,6 @@
   </div>
 </div>
 <div class="container">
-
-  <!-- <div class="row w-100 mt-4 mx-3">
-      <div class="col"    >
-          <div class="card p-0">
-              <img class="card-img" src="n1.jpg" alt="card image cap">
-              <div class="card-img-overlay d-flex flex-column justify-content-end mx-2">
-                  <h3 class="card-title"><a href="#" class="main-title-style">Заголовок 1</a></h5>
-                  <p class="card-text" style="color: white; font-size: medium;">Просто какое-то оглавление новости и какая-то информация</p>
-              </div>
-          </div>
-      </div>
-  </div> -->
   <div class="row w-100 mx-3 mt-4">
     <hr class="col" style="height: 3px; background-color: #00a750; opacity: 1;">
     <h3 class="mb-3">Остальные новости</h3>
@@ -220,9 +208,12 @@
   </div>
 </div>
 <div class="container pb-4">
-  <div class="row mx-3 w-100"><hr style="height: 3px; background-color: #00a750; opacity: 1;"></div>
   <div class="row mx-3 w-100">
-    <h3>Турнирная таблица</h3>
+    <hr style="height: 3px; background-color: #00a750; opacity: 1;">
+    <div class="row w-100 mb-3 d-flex">
+      <h3 style="width: 300px;">Турнирная таблица</h3>
+      <button *ngIf="auth" class="btn btn-secondary w-auto" routerLink="/admin/table">Редактировать</button>
+    </div>
     <div class="col-8">
       <table class="table table-striped table-bordered text-center" id="teamTable">
         <thead>

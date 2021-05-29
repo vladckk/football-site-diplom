@@ -16,12 +16,45 @@
       <div class="tab-content" id="v-links-tabContent">
         <div class="tab-pane fade show active" id="v-link-main" role="tabpanel" aria-labelledby="v-link-main-tab">
           <h2 class="coach-title">Основной состав</h2>
+          <div *ngIf="auth">
+            <a type="button" class="btn btn-success mt-2 w-auto" routerLink="/admin/coach/add">Добавить тренера</a>
+          </div>
           <div *ngFor="let coach of maincoaches">
             <hr style="margin: 30px auto;">
             <div class="row">
               <div class="col-3">
                 <div class="parent-coach-image">
-                  <img class="coach-image" src="data:image/jpeg;base64,{{coach.image.data}}">
+                  <img *ngIf="coach.image" class="coach-image" src="data:image/jpeg;base64,{{coach.image.data}}">
+                </div>
+              </div>
+              <div class="col-9">
+                <div class="coach-name mb-2">{{coach.fullname}}</div>
+                <div class="sticker mb-2"><span>{{coach.position}}</span></div>
+                <div>
+                  <p [innerHTML]="coach.bio"></p>
+                  <ul>
+                    <li class="my-1" style="color: #00a750;" *ngFor="let period of coach.periods"><span style="color: black;">{{period}}</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div *ngIf="auth">
+                <button type="button" class="btn btn-secondary mt-2" routerLink="/admin/coach/{{coach._id}}">Редактировать</button>
+                <button type="button" class="btn btn-danger mt-2 mx-3" (click)="deleteCoach(coach._id, coach.fullname)">Удалить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="v-link-reserve" role="tabpanel" aria-labelledby="v-link-reserve-tab">
+          <h2 class="coach-title">Дублирующий состав</h2>
+          <div *ngIf="auth">
+            <a type="button" class="btn btn-success mt-2 w-auto" routerLink="/admin/coach/add">Добавить тренера</a>
+          </div>
+          <div *ngFor="let coach of reservecoaches">
+            <hr style="margin: 30px auto;">
+            <div class="row">
+              <div class="col-3">
+                <div class="parent-coach-image">
+                  <img *ngIf="coach.image" class="coach-image" src="data:image/jpeg;base64,{{coach.image.data}}">
                 </div>
               </div>
               <div class="col-9">
@@ -35,28 +68,9 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="v-link-reserve" role="tabpanel" aria-labelledby="v-link-reserve-tab">
-          <h2 class="coach-title">Дублирующий состав</h2>
-          <div *ngFor="let coach of reservecoaches">
-            <hr style="margin: 30px auto;">
-            <div class="row">
-              <div class="col-3">
-                <div class="parent-coach-image">
-                  <img class="coach-image" src="data:image/jpeg;base64,{{coach.image.data}}">
-                </div>
-              </div>
-              <div class="col-9">
-                <div class="coach-name mb-2">{{coach.fullname}}</div>
-                <div class="sticker mb-2"><span>{{coach.position}}</span></div>
-                <div>
-                  <p [innerHTML]="coach.bio"></p>
-                  <ul>
-                    <li class="my-1" style="color: #00a750;" *ngFor="let period of coach.periods"><span style="color: black;">{{period}}</span></li>
-                  </ul>
-                </div>
-              </div>
+            <div *ngIf="auth">
+              <button type="button" class="btn btn-secondary mt-2" routerLink="/admin/coach/{{coach._id}}">Редактировать</button>
+              <button type="button" class="btn btn-danger mt-2 mx-3" (click)="deleteCoach(coach._id, coach.fullname)">Удалить</button>
             </div>
           </div>
         </div>

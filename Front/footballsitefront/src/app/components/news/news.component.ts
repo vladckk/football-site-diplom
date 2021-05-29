@@ -9,18 +9,22 @@ import {News} from '../../models/news';
 })
 export class NewsComponent implements OnInit {
 
+  auth = false;
   news: News[] = [];
   indexes: number[] = [];
   count: number;
   index = 0;
   previous = 0;
-  step = 2;
+  step = 20;
   private max: number;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.auth = sessionStorage.getItem('role') === '0';
+  }
 
   ngOnInit(): void {
     const params = new HttpParams().set('index', String(0)).set('step', String(this.step));
     this.http.get<News[]>('http://localhost:8080/news', {params}).subscribe(result => {
+      console.log(result);
       this.news = result;
       for (let n of this.news) {
         n.dateString = new Date(n.date).toLocaleDateString();
@@ -28,10 +32,11 @@ export class NewsComponent implements OnInit {
     });
     this.http.get<number>('http://localhost:8080/news/count').subscribe(result => {
       this.count = result;
-      this.max = Math.floor(this.count / this.step);
+      this.max = Math.round(this.count / this.step);
+      console.log(this.count + ' - ' + this.step);
       console.log(this.max);
       let cursor = 0;
-      while (cursor <= this.max) {
+      while (cursor < this.max) {
         this.indexes.push(cursor);
         cursor++;
       }
@@ -54,6 +59,14 @@ export class NewsComponent implements OnInit {
       console.log(this.news);
     });
     this.previous = this.index;
+  }
+
+  public deleteNews(id: string, title: string): void {
+    if (confirm('Вы действительно хотите удалить ' + title)) {
+      const params = new HttpParams().set('id', id);
+      this.http.delete('http://localhost:8080/admin/news/delete', {params}).subscribe();
+      window.location.reload();
+    }
   }
 
 }

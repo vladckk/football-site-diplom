@@ -3,6 +3,7 @@
 
 <div class="container mt-3 mb-3">
     <h1>Календарь игр</h1>
+    <button *ngIf="auth" class="btn btn-success" routerLink="/admin/schedule/{{year}}">Редактировать</button>
     <div class="row align-items-center mt-3 mb-3">
         <div class="col-11">
             <ul class="nav nav-pills navTours" id="pills-tab" role="tablist">
@@ -41,7 +42,7 @@
           <div class="col-4 d-table-cell align-middle right-border-style" style="font-size: small;">
             {{sched.tournament}}
             <br>{{sched.dateString}}
-            <br>Стадион "Центральный" (Гомель)
+            <br>{{sched.stadium}}
           </div>
           <div class="col-1 d-table-cell align-middle" style="font-size: large;">
             <b>{{sched.score}}</b>

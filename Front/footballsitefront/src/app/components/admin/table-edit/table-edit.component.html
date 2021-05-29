@@ -1,0 +1,87 @@
+<div class="container" *ngIf="table">
+  <div class="row my-3 mx-3">
+    <h2>Турнирная таблица</h2>
+    <form *ngIf="teamForm">
+      <div class="row">
+        <div class="col-4">
+          <label for="name" class="form-label">Команда</label>
+          <input [(ngModel)]="newTeam.name" id="name" name="name" class="form-control" autocomplete="off">
+        </div>
+        <div class="col">
+          <label for="win" class="form-label">Победы</label>
+          <input [(ngModel)]="newTeam.win" type="number" id="win" name="win" class="form-control" autocomplete="off">
+        </div>
+        <div class="col">
+          <label for="draw" class="form-label">Ничьи</label>
+          <input [(ngModel)]="newTeam.draw" type="number" id="draw" name="draw" class="form-control" autocomplete="off">
+        </div>
+        <div class="col">
+          <label for="lose" class="form-label">Поражения</label>
+          <input [(ngModel)]="newTeam.lose" type="number" id="lose" name="lose" class="form-control" autocomplete="off">
+        </div>
+        <div class="col">
+          <label for="goalsf" class="form-label">ЗМ</label>
+          <input [(ngModel)]="newTeam.goalsFor" type="number" id="goalsf" name="goalsf" class="form-control" autocomplete="off">
+        </div>
+        <div class="col">
+          <label for="goalsag" class="form-label">ПМ</label>
+          <input [(ngModel)]="newTeam.goalsAgainst" type="number" id="goalsag" name="goalsag" class="form-control" autocomplete="off">
+        </div>
+        <div class="col-2" style="margin-top: 32px">
+          <button *ngIf="!fine" class="btn btn-warning" (click)="addFine()">Штраф</button>
+          <button *ngIf="fine" class="btn btn-info" (click)="resetFine()">Убрать штраф</button>
+        </div>
+      </div>
+      <div *ngIf="fine" class="row">
+        <div class="col-1">
+          <label for="fine" class="form-label">Штраф</label>
+          <input [(ngModel)]="newTeam.fine" type="number" name="fine" id="fine" class="form-control p-1" autocomplete="off">
+        </div>
+        <div class="col-11">
+          <label for="reason" class="form-label">Причина</label>
+          <input [(ngModel)]="newTeam.reason" name="reason" id="reason" class="form-control" autocomplete="off">
+        </div>
+      </div>
+    </form>
+    <button class="btn btn-success my-3 w-auto" (click)="addTeam()">Добавить команду</button>
+    <button *ngIf="teamForm" class="btn btn-secondary my-3 mx-3 w-auto" (click)="resetForm()">Скрыть</button>
+    <table class="table table-striped table-bordered text-center" id="teamTable">
+      <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Команда</th>
+        <th scope="col">И</th>
+        <th scope="col">В</th>
+        <th scope="col">Н</th>
+        <th scope="col">П</th>
+        <th scope="col">ЗМ</th>
+        <th scope="col">ПМ</th>
+        <th scope="col">РМ</th>
+        <th scope="col">О</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let team of table.teams; let i = index">
+        <th scope="row">{{i + 1}}</th>
+        <td class="text-start"><div *ngIf="team.name !== 'ФК Гомель'; else elseTeam">{{team.name}}</div>
+          <ng-template #elseTeam><b>{{team.name}}</b></ng-template>
+        </td>
+        <td>{{team.games}}</td>
+        <td>{{team.win}}</td>
+        <td>{{team.draw}}</td>
+        <td>{{team.lose}}</td>
+        <td>{{team.goalsFor}}</td>
+        <td>{{team.goalsAgainst}}</td>
+        <td><div *ngIf="team.goalDiff < 0; else elseDiff">{{team.goalDiff}}</div>
+          <ng-template #elseDiff>+{{team.goalDiff}}</ng-template>
+        </td>
+        <td><b>{{team.points}}</b></td>
+        <td *ngIf="team.name !== 'ФК Гомель'"><button class="btn btn-secondary" (click)="editTeam(team)">Править</button></td>
+        <td *ngIf="team.name !== 'ФК Гомель'"><button class="btn btn-danger" (click)="deleteTeam(team.name)">Удалить</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -10,7 +10,56 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8e6a52f-db7c-4c64-9dd6-9c99ff5a8723" name="Default Changelist" comment="some commit" />
+    <list default="true" id="f8e6a52f-db7c-4c64-9dd6-9c99ff5a8723" name="Default Changelist" comment="some commit">
+      <change afterPath="$PROJECT_DIR$/src/app/components/admin/coach-edit/coach-edit.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/components/admin/coach-edit/coach-edit.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/admin/admin.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/admin/coach-edit/coach-edit.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/admin/admin.component.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/admin/admin.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/admin/coach-edit/coach-edit.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/admin/admin.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/app/app.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/coaches/coaches.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/coaches/coaches.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/coaches/coaches.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/coaches/coaches.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/coaches/coaches.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/coaches/coaches.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/info/info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/info/info.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/info/info.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/info/info.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/info/info.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/info/info.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/main/components.main.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/main/components.main.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/main/components.main.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/main/components.main.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/news-detail/news-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/news-detail/news-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/news-detail/news-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/news-detail/news-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/news/news.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/news/news.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/news/news.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/news/news.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/player-detail/player-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/player-detail/player-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/registry/registry.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/registry/registry.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/registry/registry.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/registry/registry.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/team/team.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/team/team.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/team/team.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/team/team.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/team/team.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/team/team.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/admin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/admin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/coach.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/coach.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/player.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/schedule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/schedule.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/season.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/season.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/bati.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/gomza.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/muz.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/n1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/n2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/n3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/nekr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/teslyukevich.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/vas.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,11 +106,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\app\components\admin" />
+      <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\app\services" />
       <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\app\components" />
       <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\assets\images" />
       <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\app\components\main" />
-      <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\app\components\app" />
-      <recent name="C:\Users\vladp\IdeaProjects\FCSite\src\app\models" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -116,7 +165,10 @@
       <workItem from="1618579769877" duration="19702000" />
       <workItem from="1619343486988" duration="10794000" />
       <workItem from="1619871065231" duration="35327000" />
-      <workItem from="1620314649342" duration="37202000" />
+      <workItem from="1620314649342" duration="92681000" />
+      <workItem from="1621244894328" duration="83048000" />
+      <workItem from="1622120793443" duration="1180000" />
+      <workItem from="1622202544048" duration="6806000" />
     </task>
     <task id="LOCAL-00001" summary="some commit">
       <created>1620830980868</created>
@@ -148,6 +200,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="some commit" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1620920707292">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1620920707292" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1620831282784">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -156,37 +212,37 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614774496747" />
-    <state width="1323" height="121" key="GridCell.Tab.0.bottom" timestamp="1620830985811">
+    <state width="1323" height="134" key="GridCell.Tab.0.bottom" timestamp="1622243107998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="121" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1620830985811" />
-    <state width="1323" height="121" key="GridCell.Tab.0.center" timestamp="1620830985811">
+    <state width="1323" height="134" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1622243107998" />
+    <state width="1323" height="134" key="GridCell.Tab.0.center" timestamp="1622243107997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="121" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1620830985811" />
-    <state width="1323" height="121" key="GridCell.Tab.0.left" timestamp="1620830985811">
+    <state width="1323" height="134" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1622243107997" />
+    <state width="1323" height="134" key="GridCell.Tab.0.left" timestamp="1622243107997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="121" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1620830985811" />
-    <state width="1323" height="121" key="GridCell.Tab.0.right" timestamp="1620830985811">
+    <state width="1323" height="134" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1622243107997" />
+    <state width="1323" height="134" key="GridCell.Tab.0.right" timestamp="1622243107998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="121" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1620830985811" />
-    <state x="163" y="0" key="SettingsEditor" timestamp="1620831267267">
+    <state width="1323" height="134" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1622243107998" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1622202823650">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1620831267267" />
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1622202823650" />
     <state x="65" y="47" key="new project wizard" timestamp="1614353070712">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="65" y="47" key="new project wizard/0.0.1366.728@0.0.1366.728" timestamp="1614353070712" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1620810318869">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1621519578687">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1620810318869" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1617291328046">
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1621519578687" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1620983950991">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1617291328046" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1620983950991" />
   </component>
 </project>

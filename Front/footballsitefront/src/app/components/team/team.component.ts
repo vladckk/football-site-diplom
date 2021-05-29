@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Player} from '../../models/player';
 
 @Component({
@@ -13,8 +13,11 @@ export class TeamComponent implements OnInit {
   defenders: Player[] = [];
   midfielders: Player[] = [];
   strikers: Player[] = [];
+  auth = true;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.auth = sessionStorage.getItem('role') === '0';
+  }
 
   ngOnInit(): void {
     this.http.get<Player[]>('http://localhost:8080/api/gks').subscribe(result => {
@@ -33,6 +36,14 @@ export class TeamComponent implements OnInit {
       this.strikers = result;
       console.log(result);
     });
+  }
+  deletePlayer(id: string): void {
+    if (confirm('Are you sure to delete him')) {
+      const params = new HttpParams().set('id', id);
+      console.log('deleting');
+      this.http.delete('http://localhost:8080/admin/player/delete', {params}).subscribe();
+      window.location.reload();
+    }
   }
 
 }

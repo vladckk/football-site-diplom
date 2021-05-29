@@ -1,0 +1,61 @@
+<div class="container my-3">
+  <form *ngIf="coach">
+    <div class="row mx-3">
+      <div class="col-3">
+        <label for="coachimg" class="form-label">Фотография</label>
+        <div class="coach-image">
+          <img alt="coach" src="{{imagestr}}">
+        </div>
+        <input type="file" class="form-control my-3" id="coachimg" name="coachimg" accept=".jpg, .jpeg, .png"
+               (change)="readURL($event)">
+      </div>
+      <div class="col-9">
+        <div class="row">
+          <div class="col-5">
+            <label for="fullname" class="form-label">ФИО</label>
+            <input [(ngModel)]="this.coach.fullname" id="fullname" name="fullname" class="form-control" autofocus
+                   autocomplete="off">
+          </div>
+          <div class="col-4">
+            <label for="position" class="form-label">Должность</label>
+            <input [(ngModel)]="this.coach.position" id="position" name="position" class="form-control" autofocus
+                   autocomplete="off">
+          </div>
+          <div class="col-3">
+            <label for="status" class="form-label">Статус</label>
+            <select (change)="setStatus($event)" name="status" type="number" class="form-select" id="status">
+              <option>Основной состав</option>
+              <option>Дублирующий состав</option>
+            </select>
+          </div>
+        </div>
+        <div class="row my-3">
+          <div class="col-3">
+            <label for="birthdate" class="form-label">Дата Рождения</label>
+            <input [(ngModel)]="coach.birthdate" name="birthdate" type="date" class="form-control" id="birthdate"
+                   autocomplete="off" value="{{coach.birthdate}}">
+          </div>
+          <div class="col-9">
+            <label for="periods">Периоды работы</label>
+            <ul id="periods">
+              <li *ngFor="let p of periods;let i = index;" class="my-2">{{p}}
+                <button class="btn btn-danger mx-2 py-1" (click)="deletePeriod(i)">x</button>
+              </li>
+              <li>
+                <input class="form-control d-inline-block my-2" style="width: 85%;margin-right: 10px;"
+                       [(ngModel)]="newPeriod" autocomplete="off" name="newperiod" id="newperiod">
+                <button class="btn btn-success" (click)="appendPeriod()">+</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <label for="bio" class="form-label">Биография</label>
+        <textarea [(ngModel)]="coach.bio" name="bio" class="form-control animated" placeholder="Биография тренера" id="bio"
+                  style="box-sizing: border-box;min-height: 200px;resize: none;">{{coach.bio}}</textarea>
+      </div>
+    </div>
+    <div class="text-end">
+      <button class="btn btn-success mt-3" (click)="addCoach()">Добавить</button>
+    </div>
+  </form>
+</div>

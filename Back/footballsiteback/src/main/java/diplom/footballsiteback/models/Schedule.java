@@ -18,6 +18,7 @@ public class Schedule {
     private String score;
     private boolean homeGame;
     private String result;
+    private String stadium;
 
     public Schedule(String homeTeam, String awayTeam, LocalDateTime date, String tournament, boolean nextMatch, String score) {
         this.homeTeam = homeTeam;

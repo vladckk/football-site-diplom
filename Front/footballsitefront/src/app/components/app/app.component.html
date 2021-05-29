@@ -1,1 +1,44 @@
+<nav class="navbar navbar-expand navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="./assets/logo.png" class="img" alt="ФК Гомель">
+    </a>
+    <div class="navbar-collapse">
+      <ul class="navbar-nav nav-fill w-100">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="/team" data-bs-toggle="dropdown">Команда</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/team">Основной состав</a></li>
+            <li><a class="dropdown-item" href="/coaches">Тренерский штаб</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/schedule">Расписание</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/statistics">Статистика</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/news">Новости</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/info">Информация о клубе</a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="!this.authenticated(); else out">
+          <a class="nav-link" href="/login" data-bs-toggle="dropdown">Регистрация/Вход</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/registry">Регистрация</a></li>
+            <li><a class="dropdown-item" href="/login">Вход</a></li>
+          </ul>
+        </li>
+        <ng-template #out>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="role === '0'" (click)="logout()" href="#">Выйти/admin</a>
+            <a class="nav-link" *ngIf="role !== '0'" (click)="logout()" href="#">Выйти</a>
+          </li>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>
 <router-outlet></router-outlet>

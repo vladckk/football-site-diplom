@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PlayersRepository extends MongoRepository<Player, String> {
     List<Player> findByPosition(String position);
+    Player findFirstByFullname(String fullname);
 }

@@ -11,6 +11,11 @@ import {NewsDetailComponent} from './components/news-detail/news-detail.componen
 import {InfoComponent} from './components/info/info.component';
 import {RegistryComponent} from './components/registry/registry.component';
 import {LoginComponent} from './components/login/login.component';
+import {CoachEditComponent} from './components/admin/coach-edit/coach-edit.component';
+import {PlayerEditComponent} from './components/admin/player-edit/player-edit.component';
+import {NewsEditComponent} from './components/admin/news-edit/news-edit.component';
+import {ScheduleEditComponent} from './components/admin/schedule-edit/schedule-edit.component';
+import {TableEditComponent} from './components/admin/table-edit/table-edit.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
@@ -23,7 +28,12 @@ const routes: Routes = [
   {path: 'news/:id', component: NewsDetailComponent},
   {path: 'info', component: InfoComponent},
   {path: 'registry', component: RegistryComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'admin/player/:id', component: PlayerEditComponent},
+  {path: 'admin/coach/:id', component: CoachEditComponent},
+  {path: 'admin/news/:id', component: NewsEditComponent},
+  {path: 'admin/schedule/:year', component: ScheduleEditComponent},
+  {path: 'admin/table', component: TableEditComponent}
 ];
 
 @NgModule({

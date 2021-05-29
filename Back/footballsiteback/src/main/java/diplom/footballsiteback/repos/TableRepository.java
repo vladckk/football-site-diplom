@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface TableRepository extends MongoRepository<Table, String> {
 
     Optional<Table> findByYear(int year);
+
+    Optional<Table> findByYearAndName(int year, String name);
 }

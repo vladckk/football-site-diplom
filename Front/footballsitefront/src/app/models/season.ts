@@ -9,4 +9,5 @@ export class Season {
   goalsconceded: number;
   minutes: number;
   number: number;
+  tournament: string;
 }

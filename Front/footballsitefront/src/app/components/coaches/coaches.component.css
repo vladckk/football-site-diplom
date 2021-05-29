@@ -33,6 +33,7 @@
   display: table-cell;
   width: 150px;
   height: 150px;
+  object-fit: cover;
 }
 
 .coach-image:hover {

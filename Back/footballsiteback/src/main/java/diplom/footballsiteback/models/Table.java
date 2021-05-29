@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 @Document(value = "tables")
 @Data
 public class Table {
@@ -14,6 +16,6 @@ public class Table {
     private String name;
     @Indexed(unique = true)
     private int year;
-    private Team[] teams;
+    private List<Team> teams;
 
 }

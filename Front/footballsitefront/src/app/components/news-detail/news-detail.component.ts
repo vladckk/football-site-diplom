@@ -23,6 +23,11 @@ export class NewsDetailComponent implements OnInit {
     this.http.get<News>('http://localhost:8080/news/id', {params}).subscribe(result => {
       this.news = result;
       this.news.dateString = new Date(this.news.date).toLocaleDateString();
+      if (this.news.videolink != null && this.news.videolink.length > 10) {
+        this.news.videolink = this.news.videolink.replace('https://www.youtube.com/watch?v=',
+          'https://www.youtube.com/embed/');
+        this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.news.videolink);
+      }
     });
     this.http.get<News[]>('http://localhost:8080/news/id/latest', {params}).subscribe(result => {
       this.latestNews = result;
@@ -31,11 +36,6 @@ export class NewsDetailComponent implements OnInit {
       }
       console.log(this.latestNews);
     });
-    if (this.news.videolink != null && this.news.videolink.length > 0) {
-      this.news.videolink = this.news.videolink.replace('https://www.youtube.com/watch?v=',
-        'https://www.youtube.com/embed/');
-      this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.news.videolink);
-    }
   }
   public clickOnLink(id: string): void {
     this.id = id;

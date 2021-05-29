@@ -16,7 +16,7 @@ export class RegistryComponent implements OnInit {
   pass2 = new FormControl('');
   errorMessage = false;
   error2Passwords = false;
-  exception = false;
+  role = 1;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -30,10 +30,14 @@ export class RegistryComponent implements OnInit {
 
   register(): void {
     if (this.passwordCheck()) {
-      this.http.post<boolean>('http://localhost:8080/registry', new Admin(this.name.value, this.pass1.value)).subscribe(result => {
-        this.exception = result;
-        if (!this.exception) {
-          this.router.navigate(['/']);
+      this.http.post<number>('http://localhost:8080/registry', new Admin(this.name.value, this.pass1.value, null)).subscribe(result => {
+        this.role = result;
+        if (this.role >= 0) {
+          sessionStorage.setItem('username', this.name.value);
+          sessionStorage.setItem('role', this.pass1.value);
+          this.router.navigate(['/']).then(() => {
+            window.location.reload();
+          });
         }
       });
     }

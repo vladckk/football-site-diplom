@@ -12,6 +12,7 @@ export class Player {
   inClub: boolean;
   image: any;
   currentseason: Season;
+  achievements: string[];
   nationality: string;
   bio: string;
 }

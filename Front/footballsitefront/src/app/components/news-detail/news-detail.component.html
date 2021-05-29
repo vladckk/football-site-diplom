@@ -3,7 +3,7 @@
 <div class="container-fluid" style="background-color: #eee">
   <div class="container">
     <div class="row">
-      <div class="col-3" style="background-color: #eee;">
+      <div class="col-3" style="background-color: #eee;" *ngIf="latestNews">
         <h2 class="tab-title text-center my-4">Последние новости клуба</h2>
         <div *ngFor="let n of latestNews" class="card mb-4">
           <img src="data:image/jpeg;base64,{{n.image[0].data}}" alt="...">
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      <div class="col-9 p-0" style="background-color: white">
+      <div class="col-9 p-0" style="background-color: white" *ngIf="news">
         <h1 class="news-title">{{news.mainTitle}}</h1>
         <hr class="mb-2">
         <div class="small-data-news">
@@ -25,7 +25,7 @@
           <p class="article-title">{{news.title}}</p>
           <p [innerHTML]="news.text"></p>
           <img *ngFor="let im of news.image" class="mb-4" src="data:image/jpeg;base64,{{im.data}}">
-          <div *ngIf="news.videolink != null && news.videolink.length > 0">
+          <div *ngIf="news.videolink != undefined && news.videolink.length > 10">
             <iframe height="400px" width="100%" [src]="url" allowfullscreen></iframe>
           </div>
         </div>

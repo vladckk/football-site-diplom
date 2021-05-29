@@ -18,7 +18,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class MainController {
 
     @Autowired
@@ -41,7 +40,10 @@ public class MainController {
 
     @GetMapping("/")
     public List<News> showNewsMainPage() {
-        return newsRepository.findAll(PageRequest.of(0, 6)).toList();
+        Query query = new Query();
+        query.fields().slice("image", 1);
+        query.with(Sort.by(Sort.Direction.DESC, "date")).limit(6);
+        return mongoTemplate.find(query, News.class);
     }
 
     @GetMapping("/mainPageGoalscorers")
@@ -80,14 +82,14 @@ public class MainController {
     public Table showTable() {
         Table table = tableRepository.findByYear(2020).orElse(null);
         assert table != null;
-        Team[] teams = table.getTeams();
-        Arrays.stream(teams).forEach(team -> {
+        List<Team> teams = table.getTeams();
+        teams.stream().forEach(team -> {
+            team.setGames(team.getWin() + team.getDraw() + team.getLose());
             team.setPoints(team.getWin() * 3 + team.getDraw() - team.getFine());
             team.setGoalDiff(team.getGoalsFor() - team.getGoalsAgainst());
         });
-        table.setTeams(Arrays.stream(teams).sorted(Comparator.comparingInt(Team::getPoints).thenComparingInt(Team::getGoalDiff)
-                .thenComparingInt(Team::getWin).reversed()).collect(Collectors.toList())
-                .toArray(new Team[table.getTeams().length]));
+        table.setTeams(teams.stream().sorted(Comparator.comparingInt(Team::getPoints).thenComparingInt(Team::getGoalDiff)
+                .thenComparingInt(Team::getWin).reversed()).collect(Collectors.toList()));
         return table;
     }
 
@@ -116,6 +118,7 @@ public class MainController {
         System.out.println(y);
         query.addCriteria(Criteria.where("date").gte(LocalDateTime.of(y,1,1,0,0))
                 .lte(LocalDateTime.of(y + 1, 1,1,0,0)));
+        query.with(Sort.by(Sort.Direction.ASC, "date"));
         List<List<Schedule>> scheduleByMonth = new ArrayList<>();
         List<Integer> numberOfMonths = new ArrayList<>();
         List<Schedule> list = mongoTemplate.find(query, Schedule.class);
@@ -184,7 +187,6 @@ public class MainController {
         query.fields().include("fullname", "seasons", "position");
         query.addCriteria(Criteria.where("position").is("Нападающий"));
         players.addAll(mongoTemplate.find(query, Player.class));
-        players.forEach(System.out::println);
         List<PlayerStats> stats = new ArrayList<>();
         players.forEach(player -> {
             Season[] seasons = player.getSeasons();
@@ -232,7 +234,7 @@ public class MainController {
     @GetMapping("/api/gomelstats")
     public TeamStats sendGomelStats() {
         Table table = tableRepository.findByYear(2020).orElse(null);
-        return new TeamStats(Objects.requireNonNull(Arrays.stream(table.getTeams())
+        return new TeamStats(Objects.requireNonNull(table.getTeams().stream()
                 .filter(team -> team.getName().equals("ФК Гомель")).findFirst().orElse(null)));
     }
 

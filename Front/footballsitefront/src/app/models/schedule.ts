@@ -10,4 +10,5 @@ export class Schedule {
   score: string;
   homeGame: boolean;
   result: string;
+  stadium: string;
 }

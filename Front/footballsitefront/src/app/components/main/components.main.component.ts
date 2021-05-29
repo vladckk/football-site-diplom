@@ -22,15 +22,17 @@ export class MainComponent implements OnInit {
   assistantsStats: Season[] = [];
   table: Table;
   finedTeams: Team[] = [];
+  image: any;
+  auth = false;
 
   ngOnInit(): void {
     this.http.get<News[]>('http://localhost:8080/').subscribe(result => {
       this.news = result;
       console.log(this.news);
+      this.image = this.news[0].image[0];
     });
     this.http.get<Player[]>('http://localhost:8080/mainPageGoalscorers').subscribe(result => {
       this.goalscorers = result;
-      console.log(this.goalscorers);
       for (const goal of this.goalscorers) {
         for (const season of goal.seasons.filter(season1 => season1.year === 2020)) {
           this.goalscorersStats.push(season);
@@ -39,7 +41,6 @@ export class MainComponent implements OnInit {
     });
     this.http.get<Player[]>('http://localhost:8080/mainPageAssistants').subscribe(result => {
       this.assistants = result;
-      console.log(this.assistants);
       for (const assist of this.assistants) {
         for (const season of assist.seasons.filter(season1 => season1.year === 2020)) {
           this.assistantsStats.push(season);
@@ -48,9 +49,7 @@ export class MainComponent implements OnInit {
     });
     this.http.get<Table>('http://localhost:8080/table').subscribe(result => {
       this.table = result;
-      console.log(this.table);
       for (const team of this.table.teams) {
-        team.games = team.win + team.draw + team.lose;
         if (team.fine > 0) {
           this.finedTeams.push(team);
         }
@@ -59,7 +58,7 @@ export class MainComponent implements OnInit {
   }
 
   constructor(private http: HttpClient) {
-
+    this.auth = sessionStorage.getItem('role') === '0';
   }
 
 }

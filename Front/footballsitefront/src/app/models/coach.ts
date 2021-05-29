@@ -7,4 +7,5 @@ export class Coach {
   periods: string[];
   image: any;
   status: number;
+  birthdate: Date;
 }

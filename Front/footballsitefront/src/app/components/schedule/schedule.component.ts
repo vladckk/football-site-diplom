@@ -14,7 +14,10 @@ export class ScheduleComponent implements OnInit {
   months: string[] = [];
   tours: string[] = [];
   year = '2020';
-  constructor(private http: HttpClient) { }
+  auth = false;
+  constructor(private http: HttpClient) {
+    this.auth = sessionStorage.getItem('role') === '0';
+  }
 
   ngOnInit(): void {
     this.initializeSchedule('Все турниры', this.year);

@@ -6,6 +6,7 @@ import lombok.Data;
 public class Team {
 
     private String name;
+    private int games;
     private int win;
     private int draw;
     private int lose;

@@ -3,11 +3,13 @@
 
 <div class="container register-block mt-3 rounded-3">
   <h5 class="register-title">Авторизация</h5>
-  <form id="register-form" (ngSubmit)="login()">
+  <form id="register-form" role="form" (ngSubmit)="login()">
     <label class="register-subtitle mt-3">Имя/Email</label><br>
-    <input type="text" id="username" name="username" style="width: 100%;" autofocus autocomplete="off" [formControl]="name"><br>
+    <input type="text" id="username" name="username" style="width: 100%;" autofocus autocomplete="off"
+      [(ngModel)]="credentials.username"><br>
     <label class="register-subtitle mt-3">Пароль</label><br>
-    <input type="password" id="password" name="password" style="width: 100%;" autocomplete="off" [formControl]="pass"><br>
+    <input type="password" id="password" name="password" style="width: 100%;" autocomplete="off"
+      [(ngModel)]="credentials.password"><br>
     <p *ngIf="exception == 0" class="error-message">Неверно введён логин или пароль</p>
     <input type="submit" class="submit-button rounded-1 mt-3" value="Авторизоваться">
   </form>

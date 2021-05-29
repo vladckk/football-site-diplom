@@ -1,0 +1,18 @@
+$form-check-input-checked-bg-color: #00a750;
+$form-check-input-checked-color: #00a750;
+$form-check-input-bg: #00a750;
+$form-check-input-border: black;
+
+.form-check-input {
+  border-color: #ccc;
+}
+
+.form-check-input:checked {
+  background-color: #00a750;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 1px #ccc;
+  border-color: #ccc;
+  color: blueviolet;
+}

@@ -13,4 +13,7 @@
 
 .players-card-img {
   position: absolute;
+  object-fit: cover;
+  max-height: 237px;
+  min-height: 237px;
 }

@@ -3,6 +3,20 @@
 
 <div class="container">
   <h1 class="info-title p-4">История клуба</h1>
+  <div class="row">
+    <div class="col-3 text-center mt-1">
+      <button *ngIf="auth" class="btn btn-success" (click)="addInfo()">Добавить/Редактировать</button>
+      <button *ngIf="edit" class="btn btn-secondary mt-2" (click)="resetForm()">Сбросить</button>
+    </div>
+    <div class="col-9" *ngIf="edit">
+      <form>
+        <label for="year" class="form-label">Год</label>
+        <input [(ngModel)]="newInfo.year" name="year" id="year" class="form-control">
+        <label for="info" class="form-label">Текст</label>
+        <textarea [(ngModel)]="newInfo.info" name="info" id="info" class="form-control textarea-info">{{newInfo.info}}</textarea>
+      </form>
+    </div>
+  </div>
   <div *ngFor="let inf of info">
     <hr>
     <div class="row mt-4 mb-4">
@@ -13,6 +27,10 @@
       <div class="col-9">
         <h2 class="info-sub-title">{{inf.year}}</h2>
         <div [innerHTML]="inf.info"></div>
+        <div *ngIf="auth" class="mt-2">
+          <button class="btn btn-secondary" (click)="editInfo(inf._id)">Редактировать</button>
+          <button class="btn btn-danger mx-4" (click)="deleteInfo(inf._id, inf.year)">Удалить</button>
+        </div>
       </div>
     </div>
   </div>
