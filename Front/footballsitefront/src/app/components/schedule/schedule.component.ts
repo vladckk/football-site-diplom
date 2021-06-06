@@ -14,6 +14,7 @@ export class ScheduleComponent implements OnInit {
   months: string[] = [];
   tours: string[] = [];
   year = '2020';
+  years = [];
   auth = false;
   constructor(private http: HttpClient) {
     this.auth = sessionStorage.getItem('role') === '0';
@@ -24,6 +25,9 @@ export class ScheduleComponent implements OnInit {
     const params = new HttpParams().set('year', this.year);
     this.http.get<string[]>('http://localhost:8080/api/schedule/tournaments', {params}).subscribe(result => {
       this.tours = result;
+    });
+    this.http.get<number[]>('http://localhost:8080/api/schedule/seasons').subscribe(result => {
+      this.years = result;
     });
   }
   public selectPill(index: number): void {

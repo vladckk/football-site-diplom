@@ -53,9 +53,8 @@ export class NewsEditComponent implements OnInit {
             }
           });
         }
-      } else {
-        console.log('adsf');
       }
+      this.router.navigateByUrl('/news');
     });
   }
 

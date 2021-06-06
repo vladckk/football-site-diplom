@@ -210,9 +210,15 @@
 <div class="container pb-4">
   <div class="row mx-3 w-100">
     <hr style="height: 3px; background-color: #00a750; opacity: 1;">
-    <div class="row w-100 mb-3 d-flex">
+    <div class="row w-100 mb-2 d-flex">
       <h3 style="width: 300px;">Турнирная таблица</h3>
-      <button *ngIf="auth" class="btn btn-secondary w-auto" routerLink="/admin/table">Редактировать</button>
+      <button *ngIf="auth" class="btn btn-secondary w-auto" routerLink="/admin/table/{{year}}">Редактировать</button>
+      <button *ngIf="auth" class="btn btn-success w-auto mx-3" routerLink="/admin/table/add">Добавить</button>
+      <select class="form-select w-auto col-1" aria-label="" [(ngModel)]="year" (ngModelChange)="changeTable(year)">
+        <option *ngFor="let season of years" value="{{season}}">{{season}}</option>
+      </select>
+      <button *ngIf="auth" class="btn btn-danger w-auto mx-3" (click)="deleteTable(table._id, table.name)">Удалить</button>
+      <h3 class="mt-2">{{table.name}}</h3>
     </div>
     <div class="col-8">
       <table class="table table-striped table-bordered text-center" id="teamTable">
@@ -230,7 +236,7 @@
           <th scope="col">О</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="table">
         <tr *ngFor="let team of table.teams; let i = index">
           <th scope="row">{{i + 1}}</th>
           <td class="text-start"><div *ngIf="team.name !== 'ФК Гомель'; else elseTeam">{{team.name}}</div>
@@ -259,10 +265,13 @@
       <p>ПМ - Пропущенные мячи</p>
       <p>РМ - Разница мячей</p>
       <p>О - Очки</p>
-      <p><div style="font-size: small" *ngFor="let finedTeam of finedTeams">
-      <div *ngIf="finedTeam.fine > 4; else elsePoint">{{finedTeam.name}} оштрафованы на {{finedTeam.fine}} очков {{finedTeam.reason}}</div>
-      <ng-template #elsePoint>{{finedTeam.name}} оштрафованы на {{finedTeam.fine}} очка {{finedTeam.reason}}</ng-template>
-    </div>
+      <p>
+      <div *ngIf="table">
+        <div style="font-size: small" *ngFor="let finedTeam of finedTeams">
+          <div *ngIf="finedTeam.fine > 4; else elsePoint">{{finedTeam.name}} оштрафованы на {{finedTeam.fine}} очков {{finedTeam.reason}}</div>
+          <ng-template #elsePoint>{{finedTeam.name}} оштрафованы на {{finedTeam.fine}} очка {{finedTeam.reason}}</ng-template>
+        </div>
+      </div>
     </div>
   </div>
 </div>

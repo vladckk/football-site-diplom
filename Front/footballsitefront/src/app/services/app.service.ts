@@ -18,12 +18,7 @@ export class AppService {
     }
   }
 
-  authenticate(credentials, callback): void {
-  /*
-    const header = new HttpHeaders(credentials ? {
-      authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
-    } : {});
-*/
+  authenticate(credentials, callback): boolean {
     this.http.post<Admin>('http://localhost:8080/login', new Admin(credentials.username, credentials.password, null))
       .subscribe(response => {
         this.user = response;
@@ -37,5 +32,6 @@ export class AppService {
         }
         return callback && callback();
       });
+    return this.authenticated;
   }
 }

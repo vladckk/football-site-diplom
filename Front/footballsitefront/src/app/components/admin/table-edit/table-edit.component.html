@@ -1,6 +1,19 @@
 <div class="container" *ngIf="table">
   <div class="row my-3 mx-3">
     <h2>Турнирная таблица</h2>
+    <div class="row my-2 px-0">
+      <div class="col-5">
+        <label for="tournament" class="form-label">Турнир</label>
+        <input [(ngModel)]="tournament" id="tournament" name="tournament" class="form-control" autocomplete="off">
+      </div>
+      <div class="col-2">
+        <label for="year" class="form-label">Сезон</label>
+        <input [(ngModel)]="year" id="year" name="year" type="number" class="form-control" autocomplete="off">
+      </div>
+      <div class="col-3">
+        <button class="btn btn-success" style="margin-top: 31px" (click)="updateTournament()">Обновить турнир</button>
+      </div>
+    </div>
     <form *ngIf="teamForm">
       <div class="row">
         <div class="col-4">
@@ -32,7 +45,7 @@
           <button *ngIf="fine" class="btn btn-info" (click)="resetFine()">Убрать штраф</button>
         </div>
       </div>
-      <div *ngIf="fine" class="row">
+      <div *ngIf="fine" class="row my-2">
         <div class="col-1">
           <label for="fine" class="form-label">Штраф</label>
           <input [(ngModel)]="newTeam.fine" type="number" name="fine" id="fine" class="form-control p-1" autocomplete="off">
@@ -63,7 +76,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let team of table.teams; let i = index">
+      <tr *ngFor="let team of teams; let i = index">
         <th scope="row">{{i + 1}}</th>
         <td class="text-start"><div *ngIf="team.name !== 'ФК Гомель'; else elseTeam">{{team.name}}</div>
           <ng-template #elseTeam><b>{{team.name}}</b></ng-template>
@@ -79,7 +92,7 @@
         </td>
         <td><b>{{team.points}}</b></td>
         <td *ngIf="team.name !== 'ФК Гомель'"><button class="btn btn-secondary" (click)="editTeam(team)">Править</button></td>
-        <td *ngIf="team.name !== 'ФК Гомель'"><button class="btn btn-danger" (click)="deleteTeam(team.name)">Удалить</button></td>
+        <td *ngIf="team.name !== 'ФК Гомель'"><button class="btn btn-danger" (click)="deleteTeam(team.name, i)">Удалить</button></td>
       </tr>
       </tbody>
     </table>

@@ -4,7 +4,7 @@ import {Player} from '../../models/player';
 import {Season} from '../../models/season';
 import {Table} from '../../models/table';
 import {Team} from '../../models/team';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-components.main',
@@ -24,6 +24,8 @@ export class MainComponent implements OnInit {
   finedTeams: Team[] = [];
   image: any;
   auth = false;
+  year = '2020';
+  years = [];
 
   ngOnInit(): void {
     this.http.get<News[]>('http://localhost:8080/').subscribe(result => {
@@ -47,8 +49,31 @@ export class MainComponent implements OnInit {
         }
       }
     });
-    this.http.get<Table>('http://localhost:8080/table').subscribe(result => {
+    const params = new HttpParams().set('year', this.year);
+    this.http.get<Table>('http://localhost:8080/table', {params}).subscribe(result => {
       this.table = result;
+      for (const team of this.table.teams) {
+        if (team.fine > 0) {
+          this.finedTeams.push(team);
+        }
+      }
+    });
+    this.http.get<number[]>('http://localhost:8080/table/years').subscribe(result => {
+      this.years = result;
+      console.log(this.years);
+    });
+  }
+
+  constructor(private http: HttpClient) {
+    this.auth = sessionStorage.getItem('role') === '0';
+  }
+
+  changeTable(year): void {
+    const params = new HttpParams().set('year', year);
+    this.http.get<Table>('http://localhost:8080/table', {params}).subscribe(result => {
+      this.table = result;
+      console.log(this.table);
+      this.finedTeams = [];
       for (const team of this.table.teams) {
         if (team.fine > 0) {
           this.finedTeams.push(team);
@@ -57,8 +82,12 @@ export class MainComponent implements OnInit {
     });
   }
 
-  constructor(private http: HttpClient) {
-    this.auth = sessionStorage.getItem('role') === '0';
+  deleteTable(id, tournament): void {
+    if (confirm('Вы действительно хотите удалить турнир ' + tournament)) {
+      const params = new HttpParams().set('id', id);
+      this.http.delete('http://localhost:8080/admin/tournament/delete', {params}).subscribe(() => {
+        window.location.reload();
+      });
+    }
   }
-
 }

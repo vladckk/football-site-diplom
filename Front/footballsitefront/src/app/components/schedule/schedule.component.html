@@ -3,7 +3,7 @@
 
 <div class="container mt-3 mb-3">
     <h1>Календарь игр</h1>
-    <button *ngIf="auth" class="btn btn-success" routerLink="/admin/schedule/{{year}}">Редактировать</button>
+    <button *ngIf="auth" class="btn btn-success" routerLink="/admin/schedule/{{year}}">Редактировать/Добавить</button>
     <div class="row align-items-center mt-3 mb-3">
         <div class="col-11">
             <ul class="nav nav-pills navTours" id="pills-tab" role="tablist">
@@ -15,8 +15,8 @@
             </ul>
         </div>
         <select class="form-select w-auto col-1" aria-label="" [(ngModel)]="year" (ngModelChange)="changeSeason(year)">
-            <option value="2020" selected>2020</option>
-            <option value="2021">2021</option>
+            <option value="{{years[0]}}" selected>{{years[0]}}</option>
+            <option *ngFor="let season of years.slice(1)" value="{{season}}">{{season}}</option>
         </select>
     </div>
     <div *ngFor="let scheduleByMonth of schedule; let i = index">

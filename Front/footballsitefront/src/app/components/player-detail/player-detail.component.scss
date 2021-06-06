@@ -2,6 +2,8 @@
   border-radius: 50%;
   height: 200px;
   width: 200px;
+  object-fit: cover;
+  object-position: top;
   border: 3px solid #fafafa;
 }
 
@@ -137,7 +139,7 @@
 
 .navSeasons .active{
   background-color: #00a750;
-  color: white; 
+  color: white;
   font-weight: 700;
 }
 

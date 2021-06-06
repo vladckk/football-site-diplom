@@ -172,8 +172,8 @@ public class AdminController {
     public void addSchedule(@RequestBody Schedule schedule, @RequestParam String year) {
         schedule.setResult(schedule.defineResult());
         System.out.println(schedule);
-        updateTable(schedule, year);
         scheduleRepository.save(schedule);
+        updateTable(schedule, year);
     }
 
     public void updateTable(Schedule schedule, String year) {
@@ -185,7 +185,7 @@ public class AdminController {
         query.addCriteria(Criteria.where("tournament").is(schedule.getTournament()));
         gomel = resetStats(gomel);
         List<Schedule> schedules = mongoTemplate.find(query, Schedule.class);
-        schedules.add(schedule);
+        schedules.forEach(System.out::println);
         Team finalGomel = gomel;
         schedules.forEach(s -> {
             String result = s.defineResult();
@@ -221,8 +221,11 @@ public class AdminController {
     }
 
     @DeleteMapping("/admin/schedule/delete")
-    public void deleteMatch(@RequestParam String id) {
+    public void deleteMatch(@RequestParam String id, @RequestParam String year) {
+        Schedule schedule = scheduleRepository.findById(id).get();
         scheduleRepository.deleteById(id);
+        System.out.println(id + " - " + year);
+        updateTable(schedule, year);
     }
 
     @PostMapping("/admin/team/edit")
@@ -258,5 +261,16 @@ public class AdminController {
         teams.removeIf((t) -> t.getName().equals(name));
         table.setTeams(teams);
         tableRepository.save(table);
+    }
+
+    @PostMapping("/admin/tournament")
+    public void updateTournament(@RequestBody Table table) {
+        tableRepository.save(table);
+    }
+
+    @DeleteMapping("/admin/tournament/delete")
+    public void deleteTournament(@RequestParam String id) {
+        System.out.println(id);
+        tableRepository.deleteById(id);
     }
 }

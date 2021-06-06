@@ -5,26 +5,34 @@
       <div class="col-4">
         <label for="home" class="form-label">Домашняя команда</label>
         <input [(ngModel)]="match.homeTeam" name="home" id="home" class="form-control mb-3" required>
-        <label for="away" class="form-label">Выездная команда</label>
-        <input [(ngModel)]="match.awayTeam" name="away" id="away" class="form-control"  required>
       </div>
       <div class="col-4">
         <label for="tournament" class="form-label">Турнир</label>
         <input [(ngModel)]="match.tournament" name="tournament" id="tournament" class="form-control mb-3">
-        <label for="stadium" class="form-label">Стадион</label>
-        <input [(ngModel)]="match.stadium" name="stadium" id="stadium" class="form-control">
       </div>
-      <div class="col-2">
+      <div class="col-3">
         <label for="date" class="form-label">Дата</label>
         <input [(ngModel)]="match.date" name="date" id="date" class="form-control mb-3" type="datetime-local">
-        <label for="score" class="form-label">Счёт</label>
-        <input [(ngModel)]="match.score" name="score" id="score" class="form-control" placeholder="0:0">
-      </div>
-      <div class="col-1 form-check form-switch mx-2" style="margin-top: 30px;">
-        <input [(ngModel)]="match.nextMatch" name="next" id="next" class="form-check-input" type="checkbox">
-        <label class="form-check-label" for="next">Следующий матч</label>
       </div>
       <p *ngIf="error" class="mt-2" style="color: red;">{{errorstr}}</p>
+      <div class="row">
+        <div class="col-4">
+          <label for="away" class="form-label">Выездная команда</label>
+          <input [(ngModel)]="match.awayTeam" name="away" id="away" class="form-control"  required>
+        </div>
+        <div class="col-4">
+          <label for="stadium" class="form-label">Стадион</label>
+          <input [(ngModel)]="match.stadium" name="stadium" id="stadium" class="form-control">
+        </div>
+        <div class="col-2">
+          <label for="score" class="form-label">Счёт</label>
+          <input [(ngModel)]="match.score" name="score" id="score" class="form-control" placeholder="0:0">
+        </div>
+        <div class="col-1 form-check form-switch mx-2" style="margin-top: 30px;">
+          <input [(ngModel)]="match.nextMatch" name="next" id="next" class="form-check-input" type="checkbox">
+          <label class="form-check-label" for="next">Следующий матч</label>
+        </div>
+      </div>
     </div>
     <button class="btn btn-success w-auto mx-3 my-2" (click)="addMatch()">Добавить</button>
     <button *ngIf="matchForm" (click)="reset()" class="btn btn-secondary w-auto h-auto my-2">Сбросить</button>
@@ -52,7 +60,7 @@
         <td class="p-1">{{sched.score}}</td>
         <td class="p-1">{{sched.nextMatch}}</td>
         <td class="p-1"><button class="btn btn-secondary" (click)="editMatch(sched)">Ред</button></td>
-        <td class="p-1"><button class="btn btn-danger" (click)="deleteMatch(sched._id)">х</button></td>
+        <td class="p-1"><button class="btn btn-danger" (click)="deleteMatch(sched)">х</button></td>
       </tr>
       </tbody>
     </table>

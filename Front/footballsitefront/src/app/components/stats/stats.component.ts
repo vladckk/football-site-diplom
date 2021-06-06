@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Player} from '../../models/player';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {PlayerStats} from '../../models/playerstats';
 import {Schedule} from '../../models/schedule';
 import {TeamStats} from '../../models/teamstats';
@@ -16,15 +16,18 @@ export class StatsComponent implements OnInit {
   goalkeepers: PlayerStats[] = [];
   matches: Schedule[] = [];
   gomel: TeamStats;
+  year = '2020';
+  years = [];
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get<PlayerStats[]>('http://localhost:8080/api/fieldplayers').subscribe(result => {
+    const params = new HttpParams().set('year', this.year);
+    this.http.get<PlayerStats[]>('http://localhost:8080/api/fieldplayers', {params}).subscribe(result => {
       this.fieldPlayers = result;
       console.log(this.fieldPlayers);
     });
-    this.http.get<PlayerStats[]>('http://localhost:8080/api/gkStats').subscribe(result => {
+    this.http.get<PlayerStats[]>('http://localhost:8080/api/gkStats', {params}).subscribe(result => {
       this.goalkeepers = result;
     });
     this.http.get<Schedule[]>('http://localhost:8080/stats/matches').subscribe(result => {
@@ -34,7 +37,26 @@ export class StatsComponent implements OnInit {
       }
       console.log(this.matches);
     });
-    this.http.get<TeamStats>('http://localhost:8080/api/gomelstats').subscribe(result => {
+    this.http.get<TeamStats>('http://localhost:8080/api/gomelstats', {params}).subscribe(result => {
+      this.gomel = result;
+      console.log(result);
+    });
+    this.http.get<number[]>('http://localhost:8080/table/years').subscribe(result => {
+      this.years = result;
+      console.log(this.years);
+    });
+  }
+
+  changeStats(): void {
+    const params = new HttpParams().set('year', this.year);
+    this.http.get<PlayerStats[]>('http://localhost:8080/api/fieldplayers', {params}).subscribe(result => {
+      this.fieldPlayers = result;
+      console.log(this.fieldPlayers);
+    });
+    this.http.get<PlayerStats[]>('http://localhost:8080/api/gkStats', {params}).subscribe(result => {
+      this.goalkeepers = result;
+    });
+    this.http.get<TeamStats>('http://localhost:8080/api/gomelstats', {params}).subscribe(result => {
       this.gomel = result;
       console.log(result);
     });

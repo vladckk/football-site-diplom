@@ -79,11 +79,13 @@ public class MainController {
     }
 
     @GetMapping("/table")
-    public Table showTable() {
-        Table table = tableRepository.findByYear(2020).orElse(null);
-        assert table != null;
+    public Table showTable(@RequestParam String year) {
+        Table table = tableRepository.findByYear(Integer.parseInt(year)).orElse(null);
+        if (table == null) {
+            return null;
+        }
         List<Team> teams = table.getTeams();
-        teams.stream().forEach(team -> {
+        teams.forEach(team -> {
             team.setGames(team.getWin() + team.getDraw() + team.getLose());
             team.setPoints(team.getWin() * 3 + team.getDraw() - team.getFine());
             team.setGoalDiff(team.getGoalsFor() - team.getGoalsAgainst());
@@ -91,6 +93,14 @@ public class MainController {
         table.setTeams(teams.stream().sorted(Comparator.comparingInt(Team::getPoints).thenComparingInt(Team::getGoalDiff)
                 .thenComparingInt(Team::getWin).reversed()).collect(Collectors.toList()));
         return table;
+    }
+
+    @GetMapping("/table/years")
+    public List<Integer> sendSeasons() {
+        Query query = new Query();
+        query.fields().include("year");
+        List<Table> tables = mongoTemplate.find(query, Table.class);
+        return tables.stream().map(Table::getYear).collect(Collectors.toList());
     }
 
     @GetMapping("/api/gks")
@@ -110,7 +120,6 @@ public class MainController {
     public List<Player> sendStrikers() { return playersRepository.findByPosition("Нападающий"); }
 
     @GetMapping("/api/schedule")
-    @ResponseBody
     public List<List<Schedule>> sendSchedule(@RequestParam String tour, @RequestParam String year) {
         System.out.println(tour);
         int y = Integer.parseInt(year);
@@ -144,8 +153,13 @@ public class MainController {
         return scheduleByMonth;
     }
 
+    @GetMapping("api/schedule/seasons")
+    public List<Integer> sendYears() {
+        return scheduleRepository.findAll().stream().map(sched -> sched.getDate().getYear()).distinct()
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("api/schedule/tournaments")
-    @ResponseBody
     public List<String> sendTournaments(@RequestParam String year) {
         int y = Integer.parseInt(year);
         Query query = new Query();
@@ -174,23 +188,24 @@ public class MainController {
     }
 
     @GetMapping("/api/fieldplayers")
-    public List<PlayerStats> sendFieldPlayerStats() {
+    public List<PlayerStats> sendFieldPlayerStats(@RequestParam String year) {
+        int y = Integer.parseInt(year);
         Query query = new Query();
         query.fields().include("fullname", "seasons", "position");
-        query.addCriteria(Criteria.where("position").is("Защитник"));
+        query.addCriteria(Criteria.where("position").is("Защитник")).addCriteria(Criteria.where("seasons.year").is(y));
         List<Player> players = mongoTemplate.find(query, Player.class);
         query = new Query();
         query.fields().include("fullname", "seasons", "position");
-        query.addCriteria(Criteria.where("position").is("Полузащитник"));
+        query.addCriteria(Criteria.where("position").is("Полузащитник")).addCriteria(Criteria.where("seasons.year").is(y));
         players.addAll(mongoTemplate.find(query, Player.class));
         query = new Query();
         query.fields().include("fullname", "seasons", "position");
-        query.addCriteria(Criteria.where("position").is("Нападающий"));
+        query.addCriteria(Criteria.where("position").is("Нападающий")).addCriteria(Criteria.where("seasons.year").is(y));
         players.addAll(mongoTemplate.find(query, Player.class));
         List<PlayerStats> stats = new ArrayList<>();
         players.forEach(player -> {
             Season[] seasons = player.getSeasons();
-            Season season = Arrays.stream(seasons).filter(s -> s.getYear() == 2020).findFirst().orElse(null);
+            Season season = Arrays.stream(seasons).filter(s -> s.getYear() == y).findFirst().orElse(null);
             stats.add(new PlayerStats(player, season));
         });
         stats.sort((ps1, ps2) -> Integer.compare(ps2.getSeason().getMinutes(), ps1.getSeason().getMinutes()));
@@ -199,15 +214,16 @@ public class MainController {
     }
 
     @GetMapping("/api/gkStats")
-    public List<PlayerStats> sendGkStats() {
+    public List<PlayerStats> sendGkStats(@RequestParam String year) {
+        int y = Integer.parseInt(year);
         Query query = new Query();
         query.fields().include("fullname", "seasons", "position");
-        query.addCriteria(Criteria.where("position").is("Вратарь"));
+        query.addCriteria(Criteria.where("position").is("Вратарь")).addCriteria(Criteria.where("seasons.year").is(y));
         List<Player> gks = mongoTemplate.find(query, Player.class);
         List<PlayerStats> gkStats = new ArrayList<>();
         gks.forEach(gk -> {
             Season[] seasons = gk.getSeasons();
-            Season season = Arrays.stream(seasons).filter(g -> g.getYear() == 2020).findFirst().orElse(null);
+            Season season = Arrays.stream(seasons).filter(g -> g.getYear() == y).findFirst().orElse(null);
             gkStats.add(new PlayerStats(gk, season));
         });
         return gkStats;
@@ -232,8 +248,10 @@ public class MainController {
     }
 
     @GetMapping("/api/gomelstats")
-    public TeamStats sendGomelStats() {
-        Table table = tableRepository.findByYear(2020).orElse(null);
+    public TeamStats sendGomelStats(@RequestParam String year) {
+        int y = Integer.parseInt(year);
+        Table table = tableRepository.findByYear(y).orElse(null);
+        System.out.println(table);
         return new TeamStats(Objects.requireNonNull(table.getTeams().stream()
                 .filter(team -> team.getName().equals("ФК Гомель")).findFirst().orElse(null)));
     }

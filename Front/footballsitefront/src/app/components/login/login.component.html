@@ -10,7 +10,7 @@
     <label class="register-subtitle mt-3">Пароль</label><br>
     <input type="password" id="password" name="password" style="width: 100%;" autocomplete="off"
       [(ngModel)]="credentials.password"><br>
-    <p *ngIf="exception == 0" class="error-message">Неверно введён логин или пароль</p>
+    <p *ngIf="errorpassword" class="error-message">Неверный логин или пароль</p>
     <input type="submit" class="submit-button rounded-1 mt-3" value="Авторизоваться">
   </form>
 </div>

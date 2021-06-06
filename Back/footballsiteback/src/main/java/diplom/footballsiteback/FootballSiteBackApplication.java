@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @SpringBootApplication
 public class FootballSiteBackApplication implements CommandLineRunner {
@@ -61,6 +63,9 @@ public class FootballSiteBackApplication implements CommandLineRunner {
         List<News> news = mongoTemplate.find(query, News.class);
         news.forEach(System.out::println);
         */
+        List<Integer> list = scheduleRepository.findAll().stream().map(sched -> sched.getDate().getYear()).distinct()
+                .collect(Collectors.toList());
+        System.out.println(list);
     }
 
     public void setPhoto(Path path, String id) throws IOException {

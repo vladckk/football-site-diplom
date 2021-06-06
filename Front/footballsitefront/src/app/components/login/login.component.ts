@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   name = new FormControl('');
   pass = new FormControl('');
-  exception: number;
+  errorpassword = false;
   credentials = {username: '', password: ''};
 
   constructor(private app: AppService, private http: HttpClient, private router: Router) { }
@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/').then(() => {
           window.location.reload();
         });
+      } else {
+        this.errorpassword = true;
       }
     });
   }

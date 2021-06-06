@@ -30,7 +30,7 @@ export class RegistryComponent implements OnInit {
 
   register(): void {
     if (this.passwordCheck()) {
-      this.http.post<number>('http://localhost:8080/registry', new Admin(this.name.value, this.pass1.value, null)).subscribe(result => {
+      this.http.post<number>('http://localhost:8080/registry', new Admin(this.name.value, this.pass1.value, this.role)).subscribe(result => {
         this.role = result;
         if (this.role >= 0) {
           sessionStorage.setItem('username', this.name.value);

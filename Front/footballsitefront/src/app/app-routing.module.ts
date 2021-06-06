@@ -33,7 +33,7 @@ const routes: Routes = [
   {path: 'admin/coach/:id', component: CoachEditComponent},
   {path: 'admin/news/:id', component: NewsEditComponent},
   {path: 'admin/schedule/:year', component: ScheduleEditComponent},
-  {path: 'admin/table', component: TableEditComponent}
+  {path: 'admin/table/:year', component: TableEditComponent}
 ];
 
 @NgModule({

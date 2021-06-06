@@ -37,10 +37,13 @@
       <change beforePath="$PROJECT_DIR$/src/app/components/news/news.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/news/news.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/news/news.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/news/news.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/player-detail/player-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/player-detail/player-detail.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/player-detail/player-detail.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/player-detail/player-detail.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/registry/registry.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/registry/registry.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/registry/registry.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/registry/registry.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/schedule/schedule.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/stats/stats.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/stats/stats.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/stats/stats.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/stats/stats.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/team/team.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/team/team.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/team/team.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/team/team.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/team/team.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/team/team.component.ts" afterDir="false" />
@@ -49,6 +52,7 @@
       <change beforePath="$PROJECT_DIR$/src/app/models/player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/player.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/models/schedule.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/schedule.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/models/season.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/season.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/models/table.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/models/table.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/bati.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/gomza.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assets/muz.jpg" beforeDir="false" />
@@ -96,6 +100,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.protractor.protractor_package" value="$PROJECT_DIR$/node_modules/protractor" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
@@ -117,6 +122,7 @@
     <configuration name="E2E Tests (FCSite)" type="JavaScriptTestRunnerProtractor">
       <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
       <node-interpreter value="project" />
+      <protractor-package value="$PROJECT_DIR$/node_modules/protractor" />
       <protractor-options value="" />
       <envs />
       <scope-kind value="ALL" />
@@ -169,6 +175,7 @@
       <workItem from="1621244894328" duration="83048000" />
       <workItem from="1622120793443" duration="1180000" />
       <workItem from="1622202544048" duration="6806000" />
+      <workItem from="1622468987845" duration="33769000" />
     </task>
     <task id="LOCAL-00001" summary="some commit">
       <created>1620830980868</created>
@@ -200,6 +207,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="some commit" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1622801588043">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1622801588043" />
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1620920707292">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -212,22 +223,22 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614774496747" />
-    <state width="1323" height="134" key="GridCell.Tab.0.bottom" timestamp="1622243107998">
+    <state width="1323" height="156" key="GridCell.Tab.0.bottom" timestamp="1622996868387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="134" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1622243107998" />
-    <state width="1323" height="134" key="GridCell.Tab.0.center" timestamp="1622243107997">
+    <state width="1323" height="156" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1622996868387" />
+    <state width="1323" height="156" key="GridCell.Tab.0.center" timestamp="1622996868387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="134" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1622243107997" />
-    <state width="1323" height="134" key="GridCell.Tab.0.left" timestamp="1622243107997">
+    <state width="1323" height="156" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1622996868387" />
+    <state width="1323" height="156" key="GridCell.Tab.0.left" timestamp="1622996868387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="134" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1622243107997" />
-    <state width="1323" height="134" key="GridCell.Tab.0.right" timestamp="1622243107998">
+    <state width="1323" height="156" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1622996868387" />
+    <state width="1323" height="156" key="GridCell.Tab.0.right" timestamp="1622996868387">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="134" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1622243107998" />
+    <state width="1323" height="156" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1622996868387" />
     <state x="163" y="0" key="SettingsEditor" timestamp="1622202823650">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
